@@ -19,6 +19,8 @@ var Service_Common = "InvestorFundaServices.svc/";
 // Service Method Name
 
 var API_Login_All = ServerName + Service_Common + "Login/";
+var API_getClientDash = ServerName + Service_Common + "getClientDashListDVal1/";
+var API_addClientDashboard = ServerName + Service_Common + "addClientDashboard";
 var API_UpdatePassword = ServerName + Service_Common + "UpdatePassword/";
 var API_UserRegistration = ServerName + Service_Common + "UserRegistration";
 var API_GetJobList = ServerName + Service_Common + "GetJobList";

@@ -2,7 +2,7 @@
     .container-item .panel-defaul {
         position: relative;
     }
-    
+
     .add-button {
         position: absolute;
         right: 0;
@@ -13,7 +13,7 @@
         color: #5b8696;
         cursor: pointer;
     }
-    
+
     .delete-button {
         position: absolute;
         right: 15px;
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="jobLocation">Select Client</label>
                             <select ng-model="addCard.ClientID" class="form-control" ng-change="getCards()">
-                                    <option value="{{client.Assort_ClientID}}"   ng-repeat="client in clientlists">{{client.Assort_ClientName}}</option>
+                                <option value="{{client.Assort_ClientID}}" ng-repeat="client in clientlists">{{client.Assort_ClientName}}</option>
                             </select>
                         </div>
 
@@ -66,7 +66,8 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label for="jobLocation">Files</label>
-                                        <input type="file" id="cardFilesDoc" class="form-control" />
+                                        <input type="file" id="file" ng-model="csvFile" onchange="angular.element(this).scope().ExcelExport(event)" />
+                                        <!-- <input type="file" id="cardFilesDoc" class="form-control" /> -->
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +83,7 @@
             </div>
 
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary" ng-click="addClienDashBoard()">Submit</button>
+                <button type="submit" class="btn btn-primary" ng-click="addClienDashBoard($event)">Submit</button>
             </div>
             </form>
         </div>

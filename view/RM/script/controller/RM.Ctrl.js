@@ -1,8 +1,11 @@
 ﻿app.controller('ClientsCtrl', ['$scope', '$rootScope', '$localStorage', '$timeout', '$interval', '$filter', '$state', 'JobService', '$http',
-    function($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, JobService, $http) {
+    function ($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, JobService, $http) {
 
         $localStorage.userData = JSON.parse(localStorage.getItem("data"));
-        $scope.Excel = function() {
+        $scope.rooData = {
+            clientDash: ''
+        }
+        $scope.Excel = function () {
             $scope.isLoader = true;
             var Datafiles = document.getElementById("doc111");
             var fd = new FormData();
@@ -12,101 +15,141 @@
             fd.append("docsType", $scope.other.docsType);
 
             $http.post(API_uploadClientDocs + $scope.other.ID + "/" + $scope.other.docsType + "/" + $scope.other.docName, fd, {
-                    withCredentials: true,
-                    headers: { 'Content-Type': undefined },
-                    transformRequest: angular.identity
-                })
-                .success(function(data, status) {
+                withCredentials: true,
+                headers: { 'Content-Type': undefined },
+                transformRequest: angular.identity
+            })
+                .success(function (data, status) {
                     swal("Success", "Document has been successfully uploaded !", "success");
                     $scope.isLoader = false;
                 })
-                .catch(function(response) {
+                .catch(function (response) {
                     $scope.isLoader = false;
                     swal("Success", "Document has been successfully uploaded !", "success");
                     //  $rootScope.UploadMessage = "File Uploaded Successfully";
                 });
         }
+        $scope.ExcelExport = function (event) {
 
-        $scope.addClienDashBoard = function() {
-            var Datafiles = document.getElementById("cardFilesDoc");
-            var url = "https://investorfundafile.blob.core.windows.net/investorfunda/auxBsXIs1gg_PJ8uMwPV1Qg_Copy of Inox Master May'18.xlsx";
-            var oReq = new XMLHttpRequest();
-            oReq.open("GET", url, true);
-            oReq.responseType = "arraybuffer";
 
-            oReq.onload = function(e) {
-                var arraybuffer = oReq.response;
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function () {
+                var fileData = reader.result;
+                var wb = XLSX.read(fileData, { type: 'binary' });
 
-                /* convert data to binary string */
-                var data = new Uint8Array(arraybuffer);
-                var arr = new Array();
-                for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-                var bstr = arr.join("");
-
-                /* Call XLSX */
-                var workbook = XLSX.read(bstr, { type: "binary" });
-
-                /* DO SOMETHING WITH workbook HERE */
-                var first_sheet_name = workbook.SheetNames[0];
-                /* Get worksheet */
-                var worksheet = workbook.Sheets[first_sheet_name];
-                console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
+                wb.SheetNames.forEach(function (sheetName) {
+                    var rowObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
+                    var jsonObj = JSON.stringify(rowObj);
+                    $scope.rooData.clientDash = jsonObj;
+                    console.log(jsonObj)
+                })
+            };
+            reader.readAsBinaryString(input.files[0]);
+        };
+        $scope.addClienDashBoard = function (event) {
+            let request = {
+                "request": {
+                    ClientID: $scope.addCard.ClientID,
+                    ClientDash: $scope.rooData.clientDash
+                }
             }
+            var getClientDash = JobService.InsertClientDash.PostPromise(request);
+            getClientDash.then(
+                // OnSuccess function
+                function (answer) {
 
-            oReq.send();
+                    if (answer.addClientDashboardResult.ResponseCode == 0) {
+                        alert(answer.addClientDashboardResult.Result)
+
+                    }
+
+                },
+                // OnFailure function
+                function (reason) {
+
+                }
+            );
+            // reader.readAsBinaryString(input.files[0]);
+            // var Datafiles = document.getElementById("cardFilesDoc");
+            // var url = "https://investorfundafile.blob.core.windows.net/investorfunda/auxBsXIs1gg_PJ8uMwPV1Qg_Copy of Inox Master May'18.xlsx";
+            // var oReq = new XMLHttpRequest();
+            // oReq.open("GET", url, true);
+            // oReq.responseType = "arraybuffer";
+
+            // oReq.onload = function (e) {
+            //     var arraybuffer = oReq.response;
+
+            //     /* convert data to binary string */
+            //     var data = new Uint8Array(arraybuffer);
+            //     var arr = new Array();
+            //     for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+            //     var bstr = arr.join("");
+
+            //     /* Call XLSX */
+            //     var workbook = XLSX.read(bstr, { type: "binary" });
+
+            //     /* DO SOMETHING WITH workbook HERE */
+            //     var first_sheet_name = workbook.SheetNames[0];
+            //     /* Get worksheet */
+            //     var worksheet = workbook.Sheets[first_sheet_name];
+            //     console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
+            // }
+
+            // oReq.send();
         }
 
-        $scope.addCardToCard = function() {
+        $scope.addCardToCard = function () {
             $scope.cards.push({
                 cardText: "",
                 cardContent: ""
             })
         }
 
-        $scope.deleteCardToCard = function(index) {
+        $scope.deleteCardToCard = function (index) {
             $scope.cards.splice(index, 1);
         }
 
         $scope.docsType = [{
-                "val": "NoOfEmployee",
-                data: "No. of employees"
-            },
-            {
-                "val": "Locations",
-                data: "Locations"
-            },
-            {
-                "val": "NoOfEmployeeCoveredInPF",
-                data: "No. of employees covered in PF/ESIC"
-            },
-            {
-                "val": "HealthReport",
-                data: "Health Report"
-            },
-            {
-                "val": "ExitsResigns",
-                data: "Exits/Resigns"
-            },
-            {
-                "val": "CLRAStatus",
-                data: "CLRA Status"
-            },
-            {
-                "val": " OpenPositionsShared",
-                data: " Open positions shared"
-            },
-            {
-                "val": "Joinees",
-                data: "Joinees"
-            },
-            {
-                "val": "Offers",
-                data: "Offers"
-            },
-            {
-                "val": "Invoices",
-                data: "Invoices"
-            }
+            "val": "NoOfEmployee",
+            data: "No. of employees"
+        },
+        {
+            "val": "Locations",
+            data: "Locations"
+        },
+        {
+            "val": "NoOfEmployeeCoveredInPF",
+            data: "No. of employees covered in PF/ESIC"
+        },
+        {
+            "val": "HealthReport",
+            data: "Health Report"
+        },
+        {
+            "val": "ExitsResigns",
+            data: "Exits/Resigns"
+        },
+        {
+            "val": "CLRAStatus",
+            data: "CLRA Status"
+        },
+        {
+            "val": " OpenPositionsShared",
+            data: " Open positions shared"
+        },
+        {
+            "val": "Joinees",
+            data: "Joinees"
+        },
+        {
+            "val": "Offers",
+            data: "Offers"
+        },
+        {
+            "val": "Invoices",
+            data: "Invoices"
+        }
 
         ]
 
@@ -132,7 +175,7 @@
         var getRmList = JobService.getRmList.getPromise($localStorage.userData.UR_ID);
         getRmList.then(
             // OnSuccess function
-            function(answer) {
+            function (answer) {
 
                 if (answer.data.GetRelationshipManagerResult.ResponseCode == 0) {
 
@@ -145,7 +188,7 @@
 
             },
             // OnFailure function
-            function(reason) {
+            function (reason) {
 
             }
         );
@@ -153,7 +196,7 @@
             var getDashBoard = JobService.getDashBoard.getPromise($localStorage.userData.UR_ID, '1');
             getDashBoard.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetDashBoardResult.ResponseCode == 0) {
 
@@ -174,7 +217,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -186,7 +229,7 @@
             var clientList = JobService.clientList.getPromise('0');
             clientList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetclientListResult.ResponseCode == 0) {
 
@@ -200,12 +243,12 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );
         }
-        $scope.other_submit = function() {
+        $scope.other_submit = function () {
             $scope.isLoader = true;
             var postData = {
                 "request": $scope.other
@@ -213,7 +256,7 @@
             var AddOtherDetails = JobService.AddOtherDetails.PostPromise(postData);
             AddOtherDetails.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     swal("Success", "Added others successfully !", "success");
                     if (answer.data.GetLocationResult.ResponseCode == 0) {
@@ -228,7 +271,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );
@@ -238,7 +281,7 @@
             var getissueList = JobService.getRmissueList.getPromise($localStorage.userData.UR_ID);
             getissueList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     if (answer.data.GetIssueViaRmListResult.ResponseCode == 0) {
 
@@ -252,18 +295,18 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
 
-        $scope.updateIssueStatus = function(item, status, index) {
+        $scope.updateIssueStatus = function (item, status, index) {
             $scope.isLoader = true;
             var UpdateIssueStatus = JobService.UpdateIssueStatus.PostPromise(item.IssueID, status, index);
             UpdateIssueStatus.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     swal("Success", "Status updated successfully  !", "success");
                     $scope.isLoader = false;
@@ -271,7 +314,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -280,7 +323,7 @@
             var clientList = JobService.clientList.getPromise('0');
             clientList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetclientListResult.ResponseCode == 0) {
 
@@ -294,7 +337,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );
@@ -304,12 +347,12 @@
 
         }
 
-        $rootScope.getCards = function() {
+        $rootScope.getCards = function () {
 
             var getClientCard = JobService.getClientCard.getPromise($scope.addCard.ClientID);
             getClientCard.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetCardClientResult.ResponseCode == 0) {
 
@@ -334,15 +377,15 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
-        $scope.showIssueDetails = function(item) {
+        $scope.showIssueDetails = function (item) {
             $scope.issueDetails = item;
         }
-        $rootScope.Logout = function() {
+        $rootScope.Logout = function () {
 
             window.location.href = '/Index.html';
             localStorage.clear();
@@ -383,7 +426,7 @@
 
 
 
-        $scope.addCardClient = function() {
+        $scope.addCardClient = function () {
 
             $scope.addCard.Text1 = JSON.stringify($scope.cards)
 
@@ -393,20 +436,20 @@
             var addClient = JobService.addCardClient.PostPromise(postData);
             addClient.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     swal("Success", "Added Card successfully !", "success");
 
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );
 
         }
-        $scope.SubmitJob = function() {
+        $scope.SubmitJob = function () {
             $scope.isLoader = true;
             // $scope.testSkills = [];
             // for (var i = 0; i < $rootScope.job.SkillsList.length; i++) {
@@ -432,7 +475,7 @@
             var createJob = JobService.createJob.PostPromise(postData);
             createJob.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     swal("Success", "job posted successfully !", "success");
                     if (answer.data.GetLocationResult.ResponseCode == 0) {
@@ -447,7 +490,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );

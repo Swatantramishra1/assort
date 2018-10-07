@@ -1,8 +1,8 @@
-﻿app.service('JobService', ['$http', '$q', '$httpParamSerializer', function($http, $q, $httpParamSerializer) {
+﻿app.service('JobService', ['$http', '$q', '$httpParamSerializer', function ($http, $q, $httpParamSerializer) {
     var deferObject,
         getJobList = {
 
-            getPromise: function() {
+            getPromise: function () {
                 let returnValue;
 
                 var promise = $http.get(API_GetJobList),
@@ -10,12 +10,12 @@
 
                 promise.then(
                     // OnSuccess function
-                    function(answer) {
+                    function (answer) {
                         // This code will only run if we have a successful promise.
                         deferObject.resolve(answer);
                     },
                     // OnFailure function
-                    function(reason) {
+                    function (reason) {
                         // This code will only run if we have a failed promise.
                         deferObject.reject(reason);
                     });
@@ -25,7 +25,7 @@
         };
     getDocList = {
 
-        getPromise: function(id) {
+        getPromise: function (id) {
             let returnValue;
 
             var promise = $http.get(API_GetDocsList + id),
@@ -33,12 +33,35 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
+                    // This code will only run if we have a failed promise.
+                    deferObject.reject(reason);
+                });
+
+            return deferObject.promise;
+        }
+    };
+    getClientDash = {
+
+        getPromise: function (ClientID) {
+            let returnValue;
+
+            var promise = $http.get(API_getClientDash + ClientID),
+                deferObject = deferObject || $q.defer();
+
+            promise.then(
+                // OnSuccess function
+                function (answer) {
+                    // This code will only run if we have a successful promise.
+                    deferObject.resolve(answer);
+                },
+                // OnFailure function
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -48,7 +71,7 @@
     };
     deleteJob = {
 
-        getPromise: function(jobID) {
+        getPromise: function (jobID) {
             let returnValue;
 
             var promise = $http.get(API_DeleteJob + jobID),
@@ -56,12 +79,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -71,7 +94,7 @@
     };
     deleteClient = {
 
-        getPromise: function(ID) {
+        getPromise: function (ID) {
             let returnValue;
 
             var promise = $http.delete(API_deleteClient + ID),
@@ -79,12 +102,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -94,7 +117,7 @@
     };
     actDeactOperClient = {
 
-        getPromise: function(ClID, Status) {
+        getPromise: function (ClID, Status) {
             let returnValue;
 
             var promise = $http.get(API_ActDeactOperClient + ClID + "/" + Status),
@@ -102,12 +125,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -117,7 +140,7 @@
     };
     deleteRm = {
 
-        deletePromise: function(RMID) {
+        deletePromise: function (RMID) {
             let returnValue;
 
             var promise = $http.delete(API_DeleteRM + RMID),
@@ -125,12 +148,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -140,7 +163,7 @@
     };
     getCompanyList = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetCompany),
@@ -148,12 +171,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -163,7 +186,7 @@
     };
     clientList = {
 
-        getPromise: function(ID) {
+        getPromise: function (ID) {
             let returnValue;
 
             var promise = $http.get(API_GetclientList + ID),
@@ -171,12 +194,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -186,7 +209,7 @@
     };
     getRmList = {
 
-        getPromise: function(RmID) {
+        getPromise: function (RmID) {
             let returnValue;
 
             var promise = $http.get(API_GetRelationshipManager + '/' + RmID),
@@ -194,12 +217,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -209,7 +232,7 @@
     };
     getissueList = {
 
-        getPromise: function(IssueID) {
+        getPromise: function (IssueID) {
             let returnValue;
 
             var promise = $http.get(API_GetIssue + '/' + IssueID),
@@ -217,12 +240,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -232,7 +255,7 @@
     };
     getissueByClient = {
 
-        getPromise: function(IssueID) {
+        getPromise: function (IssueID) {
             let returnValue;
 
             var promise = $http.get(API_GetIssueByClient + IssueID),
@@ -240,12 +263,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -255,7 +278,7 @@
     };
     getClientCard = {
 
-        getPromise: function(ClientID) {
+        getPromise: function (ClientID) {
             let returnValue;
 
             var promise = $http.get(API_GetCardClient + ClientID),
@@ -263,12 +286,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -278,7 +301,7 @@
     };
     getRmissueList = {
 
-        getPromise: function(IssueID) {
+        getPromise: function (IssueID) {
             let returnValue;
 
             var promise = $http.get(API_GetIssueViaRmList + '/' + IssueID),
@@ -286,12 +309,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -301,7 +324,7 @@
     };
     getUserList = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetUserList),
@@ -309,12 +332,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -324,7 +347,7 @@
     };
     getJobLocation = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetLocation),
@@ -332,12 +355,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -347,7 +370,7 @@
     };
     getShortlitedCandidateList = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_ShortlitedCandidateList),
@@ -355,12 +378,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -370,7 +393,7 @@
     };
     getSkillsCategory = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetSkillsCategory),
@@ -378,12 +401,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -393,7 +416,7 @@
     };
     getSkillsName = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetSkillsName),
@@ -401,12 +424,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -416,7 +439,7 @@
     };
     getIndustryList = {
 
-        getPromise: function() {
+        getPromise: function () {
             let returnValue;
 
             var promise = $http.get(API_GetIndustryList),
@@ -424,12 +447,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -439,7 +462,7 @@
     };
     getJobListByID = {
 
-        getPromise: function(jobID) {
+        getPromise: function (jobID) {
             let returnValue;
 
             var promise = $http.get(API_GetJobListByID + jobID),
@@ -447,12 +470,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -462,7 +485,7 @@
     };
     getJobListClientByID = {
 
-        getPromise: function(ClientID) {
+        getPromise: function (ClientID) {
             let returnValue;
 
             var promise = $http.get(API_GetJobClientList + ClientID),
@@ -470,12 +493,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -486,7 +509,7 @@
 
     getDashBoard = {
 
-        getPromise: function(ID, Type) {
+        getPromise: function (ID, Type) {
             let returnValue;
 
             var promise = $http.get(API_GetDashBoard + ID + "/" + Type),
@@ -494,12 +517,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -510,7 +533,7 @@
 
     getOtherDetails = {
 
-        getPromise: function(ID) {
+        getPromise: function (ID) {
             let returnValue;
 
             var promise = $http.get(API_GetOtherDetails + ID),
@@ -518,12 +541,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -533,7 +556,7 @@
     };
     getUserDetailsByID = {
 
-        getPromise: function(UserID) {
+        getPromise: function (UserID) {
             let returnValue;
 
             var promise = $http.get(API_GetUserDetailsByID + UserID),
@@ -541,12 +564,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -556,7 +579,7 @@
     };
     getAppliedJobListByID = {
 
-        getPromise: function(jobID) {
+        getPromise: function (jobID) {
             let returnValue;
 
             var promise = $http.get(API_GetAppliedJobListByID + jobID),
@@ -564,12 +587,12 @@
 
             promise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     // This code will only run if we have a successful promise.
                     deferObject.resolve(answer);
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     // This code will only run if we have a failed promise.
                     deferObject.reject(reason);
                 });
@@ -579,7 +602,7 @@
     };
     GetIssueRep = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -590,10 +613,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -603,7 +626,7 @@
     };
     createJob = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
             console.log("Data", PostData);
             for (var i = 0; i < PostData.request.SkillsList.length; i++) {
                 delete PostData.request.SkillsList["$$hashKey"];
@@ -619,10 +642,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -632,7 +655,7 @@
     };
     addCardClient = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -643,10 +666,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -656,7 +679,7 @@
     };
     createUpdateIssue = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -667,10 +690,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -680,7 +703,7 @@
     };
     addLocation = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -691,10 +714,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -704,7 +727,7 @@
     };
     addIndustry = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -715,10 +738,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -728,7 +751,7 @@
     };
     addSkillCategoryName = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -739,10 +762,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -752,7 +775,7 @@
     };
     addSkillName = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -763,10 +786,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -776,7 +799,7 @@
     };
     addRM = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -787,10 +810,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -800,7 +823,7 @@
     };
     addCompany = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -811,10 +834,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -824,7 +847,7 @@
     };
     UpdateUser = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -835,10 +858,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -848,7 +871,7 @@
     };
     AddOtherDetails = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -859,10 +882,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -872,7 +895,7 @@
     };
     UpdateIssueStatus = {
 
-        PostPromise: function(IssueID, Status) {
+        PostPromise: function (IssueID, Status) {
             let PostData = {
                 IssueStatus: {
                     IssueID: IssueID,
@@ -888,10 +911,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -901,7 +924,7 @@
     };
     ApplyJob = {
 
-        PostPromise: function(CandidateID, JobID) {
+        PostPromise: function (CandidateID, JobID) {
 
             deferObject = deferObject || $q.defer();
             $.ajax({
@@ -911,10 +934,34 @@
                 contentType: 'application/json',
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
+                    deferObject.reject(errorThrown);
+                }
+            });
+            return deferObject.promise;
+        }
+
+    };
+    InsertClientDash = {
+
+        PostPromise: function (PostData) {
+
+            deferObject = deferObject || $q.defer();
+            $.ajax({
+                url: API_addClientDashboard,
+                dataType: 'json',
+                type: 'post',
+                data: JSON.stringify(PostData),
+                contentType: 'application/json',
+                processData: false,
+                async: false,
+                success: function (data, textStatus, jQxhr) {
+                    deferObject.resolve(data);
+                },
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -924,7 +971,7 @@
     };
     AddClients = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
             deferObject = deferObject || $q.defer();
             $.ajax({
                 url: API_AddClient,
@@ -934,10 +981,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -947,7 +994,7 @@
     };
     AddShortListedCand = {
 
-        PostPromise: function(PostData) {
+        PostPromise: function (PostData) {
             deferObject = deferObject || $q.defer();
             $.ajax({
                 url: API_InsertShortListedCandidate,
@@ -957,10 +1004,10 @@
                 data: JSON.stringify(PostData),
                 processData: false,
                 async: false,
-                success: function(data, textStatus, jQxhr) {
+                success: function (data, textStatus, jQxhr) {
                     deferObject.resolve(data);
                 },
-                error: function(jqXhr, textStatus, errorThrown) {
+                error: function (jqXhr, textStatus, errorThrown) {
                     deferObject.reject(errorThrown);
                 }
             });
@@ -1009,7 +1056,9 @@
         actDeactOperClient: actDeactOperClient,
         getDocList: getDocList,
         addCardClient: addCardClient,
-        getClientCard: getClientCard
+        getClientCard: getClientCard,
+        getClientDash: getClientDash,
+        InsertClientDash: InsertClientDash
     }
 
 }]);

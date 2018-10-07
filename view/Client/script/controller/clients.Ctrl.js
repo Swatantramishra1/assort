@@ -3,33 +3,17 @@
         $scope.isLoader = true;
         $scope.userDataCommon = JSON.parse(localStorage.getItem("data"));
 
-        $scope.addCard = {
-            ClientID: '',
-            Label1: 'Card1',
-            Label2: 'Card2',
-            Label3: 'Card3',
-            Label4: 'Card4',
-            Text1: '',
-            Text2: '',
-            Text3: '',
-            Text4: '',
-        }
+        $scope.addCard = [{}]
 
 
-        var getClientCard = JobService.getClientCard.getPromise($scope.userDataCommon.UR_ID);
+        var getClientCard = JobService.getClientDash.getPromise($scope.userDataCommon.UR_ID);
         getClientCard.then(
             // OnSuccess function
             function(answer) {
 
-                if (answer.data.GetCardClientResult.ResponseCode == 0) {
+                
+                    $scope.addCard = JSON.parse(answer.data.GetClientDashListDVal1Result[0].ClientDash);
 
-
-                    $scope.addCard = JSON.parse(answer.data.GetCardClientResult.Result[0].Text1);
-
-                } else {
-                    $scope.ErrorMessage = answer.data.GetCompanyResult.ResponseMessage;
-
-                }
 
             },
             // OnFailure function
