@@ -1,0 +1,131 @@
+﻿<style>
+    .ta-scroll-window.ng-scope.ta-text.ta-editor.clearfix.border-around.container {
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.44)
+    }
+    
+    textarea.ta-bind {
+        width: 100%;
+    }
+    
+    div#taTextElement1930502284364164 {
+        border: 1px solid gray;
+    }
+    
+    .ta-scroll-window.ng-scope.ta-text.ta-editor.clearfix.border-around.container {
+        border: 0 solid white !important;
+    }
+    
+    .ta-scroll-window.ng-scope.ta-text.ta-editor.clearfix.border-around.container p {
+        border: 1px solid gray !important;
+        height: 45px;
+    }
+</style>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h2 class="box-title">Post Job</h2>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="jobtitle">Job Title</label>
+                            <input type="text" class="form-control" id="jobtitle" ng-model="job.Job_Title" placeholder="Enter Job Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobdiscription">Job Description</label>
+                            <div class="col- lg-12 lighter">
+                                <div text-angular ng-model="job.Job_Description" name="demo-editor" ta-text-editor-class="clearfix border-around container" ta-html-editor-class="border-around"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="visibility:hidden">
+                            <label for="jobpostedby">Job Posted By</label>
+                            <input type="text" class="form-control" id="jobpostedby" ng-model="job.Job_PostedBy" placeholder="Posted By">
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.CompanyID">
+                                <option  disabled>Select Company Name</option>
+                                <option  value="{{item.LocationID}}" ng-repeat="item in getCompanyLists">{{item.Name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Min Experience</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.Job_Exp_Min">
+                                <option selected="selected" disabled>Select Min Experience</option>
+                                <option value="{{$index}}" ng-repeat="range in getNumberAsArray(numberExp) track by $index">{{$index}} Year</option>
+                               
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Max Experience</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.Job_Exp_Max">
+                                <option selected="selected" disabled>Select Max Experience</option>
+                                <option value="{{$index}}" ng-repeat="range in getNumberAsArray(numberExp) track by $index">{{$index}} Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Min Salary</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.Job_Sal_Min">
+                                <option selected="selected" disabled>Select Min Salary</option>
+                                <option value="{{$index+1}}" ng-repeat="range in getNumberAsArray(numberExp) track by $index">{{$index+1}} Lakhs P.A</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Max Salary</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.Job_Sal_Max">
+                                <option selected="selected" disabled>Select Max Salary</option>
+                                <option value="{{$index+1}}" ng-repeat="range in getNumberAsArray(numberExp) track by $index">{{$index+1}}  Lakhs P.A</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Location</label>
+                            <select class="form-control select2" multiple="multiple" style="width: 100%;" ng-model="job.LocationID">
+                                <option selected="selected"  disabled>Select Location</option>
+                                <option value="{{locationlist.Name}}" ng-repeat="locationlist in GetLocationResultLists">{{locationlist.Name}}</option>
+                             
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Education</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.educationID">
+                                <option selected="selected" disabled>Select Education</option>
+                                <option value="{{edcationlist.Assort_skillCategoryID}}" ng-repeat="edcationlist in getSkillsCategoryLists">{{edcationlist.Assort_skillCategoryName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Skills</label>
+                            <select class="form-control select2" multiple="multiple" style="width: 100%;" ng-model="job.SkillsList">
+                                <option selected="selected" disabled>Select Skills</option>
+                                <option value="{{skilllist.Assort_skillName}}" ng-show="job.educationID==skilllist.Assort_skillCategoryID" ng-repeat="skilllist in getSkillsNameLists">{{skilllist.Assort_skillName}}</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Industry</label>
+                            <select class="form-control select2" style="width: 100%;" ng-model="job.IndustryID">
+                                <option selected="selected" disabled>Select Industry</option>
+                                <option value="{{industryList.IndustryID}}"  ng-repeat="industryList in getIndustryLists">{{industryList.Name}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="SubmitJob()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

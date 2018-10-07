@@ -1,0 +1,179 @@
+﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+
+
+<style>
+    .row {
+        margin-bottom: 0px !important;
+    }
+</style>
+<div class="col-lg-4"></div>
+<div class="col-lg-4" style="margin-top: 150px">
+    <div id="login-page" class="row" ng-show="Login.login">
+        <div class="col s12 z-depth-6 card-panel">
+            <form class="login-form">
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <img src="../../img/logo.jpg" alt="" class="responsive-img valign profile-image-login" style="width:50%">
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input class="validate" id="email" type="text" ng-model="user.username" placeholder="Email">
+                        <label for="email" data-error="wrong" data-success="right" class="center-align"></label>
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-lock-outline prefix"></i>
+                        <input id="password" type="password" ng-model="user.password" placeholder="Password">
+                        <label for="password"></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 m6 l6 login-text">
+                        <input type="checkbox" id="remember-me" ng-click="CheckAsClients()" />
+                        <label for="remember-me">Login as client</label>
+                    </div>
+                    <div class="input-field col s6 m6 l6 login-text">
+                        <input type="checkbox" id="remember-me1" ng-click="CheckAsRM()" />
+                        <label for="remember-me1">Login as RM</label>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <a ng-click="Login_All()" class="btn waves-effect waves-light col s12">Login</a>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 15px;">
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin medium-small"><a ng-click="showRegistration()">Register Now!</a></p>
+                    </div>
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin right-align medium-small"><a ng-click="showForgotPassword()">Forgot password?</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="login-page" class="row" ng-show="Login.Registration">
+        <div class="col s12 z-depth-6 card-panel">
+            <form class="login-form">
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <img src="../../img/logo5.png" alt="" class="responsive-img valign profile-image-login" style="width:50%">
+                    </div>
+                </div>
+                <div class="row margin" ng-show="Register.otpReg">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input id="firstname" type="text" class="validate" placeholder="First Name" ng-model="Register.FirstName">
+                    </div>
+                </div>
+                <div class="row margin" ng-show="Register.otpReg">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input id="lastname" type="text" class="validate" placeholder="Last Name" ng-model="Register.LastName">
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input id="mobileNo" type="text" class="validate" ng-disabled="Register.otpReg" placeholder="Mobile No" ng-model="Register.mobileno">
+                    </div>
+                </div>
+                <div class="row margin" ng-show="sendedOTP">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input id="otp" type="text" class="validate" placeholder="Enter OTP" required ng-model="Mobileotp">
+                    </div>
+                </div>
+                <div class="row margin" ng-show="Register.otpReg">
+                    <div class="input-field col s12">
+                        <i class="mdi-communication-email prefix"></i>
+                        <input id="email" type="email" class="validate" placeholder="Email" ng-model="Register.Email">
+                    </div>
+                </div>
+                <div class="row margin" ng-show="Register.otpReg">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-lock-outline prefix"></i>
+                        <input id="password" type="password" class="validate" placeholder="Password" ng-model="Register.Password">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12" ng-show="Register.otpReg">
+                        <input type="button" ng-click="RegistrationFun()" class="btn waves-effect waves-light col s12" value="Register Now" />
+                    </div>
+                    <div class="input-field col s12" ng-show="!Register.otpReg">
+                        <input type="button" ng-click="sendOtp()" class="btn waves-effect waves-light col s12" value="{{otpbtn}}" />
+                    </div>
+                    <div class="input-field col s12">
+                        <p class="margin center medium-small sign-up">Already have an account? <a ng-click="showLogin()">Login</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ErrorMessage}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="login-page" class="row" ng-show="Login.ForgotPassword">
+        <div class="col s12 z-depth-6 card-panel">
+            <form class="login-form">
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <img src="../../img/logo5.png" alt="" class="responsive-img valign profile-image-login" style="width:50%">
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input class="validate" id="email" type="email" ng-model="Forgot.Email" placeholder="Email ID">
+                    </div>
+                    <div class="row margin" ng-show="Forgot.IsSendEmail">
+                        <div class="input-field col s12">
+                            <i class="mdi-social-person-outline prefix"></i>
+                            <input id="otp" type="text" class="validate" placeholder="Enter OTP" required ng-model="Mobileotp">
+                        </div>
+                    </div>
+                    <div class="input-field col s12" ng-show="Forgot.IsSendOtp">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input class="validate" type="password" ng-model="Forgot.Pass" placeholder="Enter Password">
+                    </div>
+                    <div class="input-field col s12" ng-show="Forgot.IsSendOtp">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        <input class="validate" type="password" ng-model="Forgot.ConfirmPass" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="row" ng-show="!Forgot.IsSendEmailBtn">
+                    <div class="input-field col s12">
+                        <a class="btn waves-effect waves-light col s12" ng-click="recoverPassword()">Recover my Password</a>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="Forgot.IsSendEmailBtn">
+                    <div class="input-field col s12">
+                        <a class="btn waves-effect waves-light col s12" ng-click="changePassword()">Reset my Password</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin medium-small"><a ng-click="showRegistration()">Register Now!</a></p>
+                    </div>
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin right-align medium-small"><a ng-click="showLogin()">Login</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4"></div>

@@ -1,0 +1,67 @@
+﻿<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Relationship Manager</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Unique Code</label>
+                            <input type="text" disabled value="{{getRelationshipManager[0].AssortClientManagerUniqueCode}}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation"> Name</label>
+                            <input type="text" class="form-control" id="clientsName" ng-model="getRelationshipManager[0].Assort_ClientContactPersonName" disabled placeholder="Relationship Manager Name">
+                        </div> 
+                        <div class="form-group">
+                            <label for="jobLocation"> Email ID</label>
+                            <input type="text" class="form-control" id="clientsName" ng-model="getRelationshipManager[0].Assort_ClientEmail" disabled placeholder="Relationship Manager EmailID">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation"> Mobile No</label>
+                            <input type="text" class="form-control" id="clientsName" ng-model="getRelationshipManager[0].Assort_ClientPNumber" disabled placeholder="Relationship Manager Mobile No">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation"> Position</label>
+                            <input type="text" class="form-control" id="clientsName" ng-model="getRelationshipManager[0].Assort_ClientManagerName" disabled placeholder="Relationship Manager Position">
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">RM Manager</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Name</label>
+                                    <input type="text" disabled class="form-control" id="AssortClientManager2Name" value="{{getRelationshipManager[0].AssortClientManager1Name}}" placeholder="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Email</label>
+                                    <input type="text" disabled class="form-control" id="Assort_ClientEmailAssortClientManager2Email" value="{{getRelationshipManager[0].AssortClientManager1Email}}" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">RM CEO</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Name</label>
+                                    <input type="text" disabled class="form-control" id="AssortClientManager2Name" value="{{getRelationshipManager[0].AssortClientManager2Name}}" placeholder="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Email</label>
+                                    <input type="text" disabled class="form-control" id="Assort_ClientEmailAssortClientManager2Email" value="{{getRelationshipManager[0].AssortClientManager2Email}}" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,227 @@
+﻿<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h2 class="box-title">Add New Clients</h2>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" name="clientForm" novalidate>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="jobLocation">Client's Name <span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="clientsName" required ng-model="addClient.Assort_ClientName" placeholder="Enter Client Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client's User ID <span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Assort_ClientUserID" required ng-model="addClient.Assort_ClientUserID" placeholder="Enter Client User ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client's User Password <span style="color:red">*</span></label>
+                            <input type="password" class="form-control" id="Assort_ClientPassword" required ng-model="addClient.Assort_ClientPassword" placeholder="Enter Client Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client's Contract Start date</label>
+                            <input type="text" class="form-control" id="Assort_StartContractDate" ng-model="addClient.Assort_StartContractDate" placeholder="Enter Client Start Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client's Contract End date</label>
+                            <input type="text" class="form-control" id="Assort_EndContractDate" ng-model="addClient.Assort_EndContractDate" placeholder="Enter Client End Date">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">First Currently Outsouced Agnecy</label>
+                            <input type="text" class="form-control" id="Assort_CurrentlyOutsourcedAgency1" ng-model="addClient.Assort_CurrentlyOutsourcedAgency1" placeholder="First Currently Outsouced Agnecy">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Second Currently Outsouced Agnecy</label>
+                            <input type="text" class="form-control" id="Assort_CurrentlyOutsourcedAgency2" ng-model="addClient.Assort_CurrentlyOutsourcedAgency2" placeholder="Second Currently Outsouced Agnecy">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Third Currently Outsouced Agnecy</label>
+                            <input type="text" class="form-control" id="Assort_CurrentlyOutsourcedAgency3" ng-model="addClient.Assort_CurrentlyOutsourcedAgency3" placeholder="Third Currently Outsouced Agnecy">
+                        </div>
+                        <div class="form-group" ng-show="false">234
+                            <label for="jobLocation">Four Currently Outsouced Agnecy</label>
+                            <input type="text" class="form-control" id="Assort_CurrentlyOutsourcedAgency4" ng-model="addClient.Assort_CurrentlyOutsourcedAgency4" placeholder="Four Currently Outsouced Agnecy">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Five Currently Outsouced Agnecy</label>
+                            <input type="text" class="form-control" id="Assort_CurrentlyOutsourcedAgency5" ng-model="addClient.Assort_CurrentlyOutsourcedAgency5" placeholder="Five Currently Outsouced Agnecy">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Average Mark up for intelligence</label>
+                            <input type="text" class="form-control" id="Assort_AveragemarkupForIntelligence" ng-model="addClient.Assort_AveragemarkupForIntelligence" placeholder="Average Mark up for intelligence">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobLocation">Select Service</label>
+                            <select class="form-control" ng-model="addClient.Assort_Temporarystaffing">
+                                <option disabled value="0"> Select Temporary Staffing</option>
+                                <option value="Transition- Payroll"> Transition- Payroll</option>
+                                <option value="HRO"> HRO</option>
+                                <option value="Recruit and Payroll"> Recruit and Payroll</option>
+                                <option value="Permanent"> Permanent</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Reason for change issue</label>
+                            <input type="text" class="form-control" id="Assort_Reasonforchangeisuue" ng-model="addClient.Assort_Reasonforchangeisuue" placeholder="Reason for change issue">
+                        </div>
+
+                        <div class="form-group " style="display:none">
+                            <label for="jobLocation">Total staff outsource recruit</label>
+                            <input type="text" class="form-control" id="Assort_TotalstafftooutsourceRecruit" ng-model="addClient.Assort_TotalstafftooutsourceRecruit" placeholder="Total staff outsource recruit">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Total staff outsource </label>
+                            <input type="text" class="form-control" id="Assort_TotalstafftooutsourceOutsource" ng-model="addClient.Assort_TotalstafftooutsourceOutsource" placeholder="Total staff outsource ">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Min Salary</label>
+                            <input type="text" class="form-control" id="Assort_MinSalary" ng-model="addClient.Assort_MinSalary" placeholder="Min Salary">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Max Salary</label>
+                            <input type="text" class="form-control" id="Assort_MaxSal" ng-model="addClient.Assort_MaxSal" placeholder="Max Salary">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Job Discription</label>
+                            <input type="text" class="form-control" id="Assort_JobDescription" ng-model="addClient.Assort_JobDescription" placeholder="Job Discription">
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Payment term for permanent placement signof</label>
+                            <input type="text" class="form-control" id="Assort_Paymenttermforpermanentplacementsignof" ng-model="addClient.Assort_Paymenttermforpermanentplacementsignof" placeholder="Payment term for permanent placement signof">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Insurance Coverage</label>
+                            <input type="text" class="form-control" id="Assort_InsuranceCoverage" ng-model="addClient.Assort_InsuranceCoverage" placeholder="Insurance Coverage">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Industry</label>
+                            <input type="text" class="form-control" id="industry" ng-model="addClient.industry" placeholder="Industry">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Turn Over</label>
+                            <input type="text" class="form-control" id="turn_over" ng-model="addClient.turn_over" placeholder="turn Over">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client Website</label>
+                            <input type="text" class="form-control" id="client_website" ng-model="addClient.client_website" placeholder="Client Website">
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Client LinkedIn</label>
+                            <input type="text" class="form-control" id="client_linkedin" ng-model="addClient.client_linkedin" placeholder="Client LinkedIn">
+                        </div>
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Permanent Business</label>
+                            <input type="text" class="form-control" id="permaBuiseness13" ng-model="addClient.permaBuiseness13" placeholder="Permanent Business">
+                        </div>
+
+                        <div class="form-group" style="display:none">
+                            <label for="jobLocation">Terms of payment for sharing</label>
+                            <select class="form-control" ng-model="addClient.terms_of_payment_forSharing">
+                                <option disabled>Select</option>
+                                <option value="Cash & Carry">Cash & Carry</option>
+                                <option value="Upfront">Upfront</option>
+                                <option value="Complince">Complince</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" id="terms_of_payment_forSharing" ng-model="addClient.terms_of_payment_forSharing" placeholder="Terms of payment for sharing">-->
+                        </div>
+                        <div class="form-group">
+                            <label for="jobLocation">Replacement Period</label>
+                            <input type="text" class="form-control" id="replacement_period" ng-model="addClient.replacement_period" placeholder="Replacement Period">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Cash & Carry</label>
+                            <input type="text" class="form-control" id="cash_and_carry" ng-model="addClient.cash_and_carry" placeholder="Cash & Carry">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Upfront</label>
+                            <input type="text" class="form-control" id="upfront" ng-model="addClient.upfront" placeholder="Upfront">
+                        </div>
+                        <div class="form-group" ng-show="false">
+                            <label for="jobLocation">Complince</label>
+                            <input type="text" class="form-control" id="complince" ng-model="addClient.complince" placeholder="Complince">
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Client Contact Details</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Client Contact Name <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="Assort_ClientContactPersonName" required ng-model="addClient.Assort_ClientContactPersonName" placeholder="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Email <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="Assort_ClientEmail" required ng-model="addClient.Assort_ClientEmail" placeholder="Email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Phone No <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="Assort_ClientPNumber" required ng-model="addClient.Assort_ClientPNumber" maxlength="15" placeholder="Phone No">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Position <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="Assort_ClientManagerName" required ng-model="addClient.Assort_ClientManagerName" placeholder="Position">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Select Relationship Manager</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Choose Relationship Manager <span style="color:red">*</span></label>
+                                    <select class="form-control" ng-model="addClient.Assort_ClientContactID" required>
+                                        <option disabled="disabled" selected="selected">Select Manager</option>
+                                        <option value="{{rm.Assort_ClientContactID}}" ng-repeat="rm in getRelationshipManager">{{rm.Assort_ClientContactPersonName}}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default" ng-show="addClient.Assort_ClientID != '0'">
+                            <div class="panel-heading">Upload Documents</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Agreement</label>
+                                    <input type="file" id="doc1" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="button" ng-click="SubmitAgreement()" class="btn btn-success" value="Submit Agreement" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="SubmitAddClient()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="loading" ng-show="isLoader">Loading&#8230;</div>
+
+
+<script>
+    $(function() {
+        $("#Assort_StartContractDate").datepicker("option", "showAnim", "fold");
+        $("#Assort_EndContractDate").datepicker("option", "showAnim", "fold");
+
+    });
+</script>

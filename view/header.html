@@ -1,0 +1,214 @@
+﻿<style>
+    .topHeader {
+        position: fixed;
+        width: 100%;
+        background-color: red;
+        z-index: 100;
+    }
+    
+    .get-started-btn {
+        min-width: 120px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .btn-primary {
+        color: #fff !important;
+        background: #e33939 !important;
+        padding-top: 8px;
+        padding-bottom: 6px;
+        vertical-align: middle;
+        border: none;
+    }
+    
+    .btn-primary:hover {
+        color: #fff !important;
+        background: #e33939 !important;
+    }
+    
+    @media (min-width: 768px) {
+        .navbar-nav>li>a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+    
+    .navbar-default .navbar-nav>li>a {
+        color: black !important;
+    }
+</style>
+
+
+<div class="row themeBgColor themeTopHieght topDivHeader topHeader" ng-controller="CommonCtrl">
+    <div class="container marginLeftMinus10">
+
+        <ul class="list-inline" style="text-align:left">
+            <li>
+                <a href="https://www.facebook.com/Assort-Staffing-Services-Pvt-Ltd-206870713130544/" target="_blank"><i class="fa fa-2x fa-facebook" aria-hidden="true" style="color:white"></i></a>
+            </li>
+            <li>
+                <a href="https://twitter.com/AssortServices" target="_blank"><i class="fa fa-2x fa-twitter" aria-hidden="true" style="color:white"></i></a>
+
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/organization/13274665/admin/updates" target="_blank"><i class="fa fa-2x fa-linkedin" aria-hidden="true" style="color:white"></i></a>
+
+            </li>
+            <li style="float:right;color:black !important">
+                <select ng-model="redirectPage" style="width:100%" ng-change="check()">
+                 
+                    <option value="Index" >
+                        India
+                    </option>
+                    <option value="USA" >
+                        USA
+                    </option>
+                    <option value="MidelEast">
+                        MIDDLE EAST
+                    </option>
+                </select>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="margin-top: 45px;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+            <a class="navbar-brand" href="#">
+                <div class="col-lg-12">
+                    <img ui-sref="Index" style="margin-top: -13px;width: auto;height: 68px;margin-top:-28px;" src="../img/logo.jpg" href="#/Index"></div>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a ui-sref="Index" class="hidden-xs">HOME</a>
+                    <a ui-sref="Index" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">HOME</a></li>
+                <li>
+                    <a ui-sref="About" class="hidden-xs">ABOUT US</a>
+                    <a ui-sref="About" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">ABOUT US</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">SERVICES <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a ui-sref="RecruitmentStaffing" class="hidden-xs">Recruitment Process Outsourcing</a>
+                            <a ui-sref="RecruitmentStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Recruitment Process Outsourcing</a></li>
+
+
+                        <li>
+                            <a ui-sref="Payroll" class="hidden-xs">Payroll Outsourcing</a>
+                            <a ui-sref="Payroll" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Payroll Outsourcing</a></li>
+
+
+
+                        <li>
+                            <a ui-sref="SearchSelection" class="hidden-xs">Search & Selection</a>
+                            <a ui-sref="SearchSelection" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Search & Selection</a></li>
+
+                        <li><a ui-sref="TempStaffing" class="hidden-xs">Temporary Staffing</a></li>
+                        <li><a ui-sref="TempStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Temporary Staffing</a></li>
+
+
+                        <li>
+                            <a ui-sref="itStaffing" class="hidden-xs">IT Staffing</a>
+                            <a ui-sref="itStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">IT Staffing</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a ui-sref="team" class="hidden-xs">TEAM</a>
+                    <a ui-sref="team" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">TEAM</a></li>
+
+
+                <li>
+                    <a ui-sref="news" class="hidden-xs">NEWS & EVENTS</a>
+                    <a ui-sref="news" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">NEWS & EVENTS</a></li>
+
+
+                <li>
+                    <a ui-sref="Blog" class="hidden-xs">BLOG</a>
+                    <a ui-sref="Blog" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">BLOG</a></li>
+
+
+                <li>
+                    <a ui-sref="Job" class="hidden-xs">JOB</a>
+                    <a ui-sref="Job" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">JOB</a></li>
+
+
+                <li>
+                    <a ui-sref="Contact" class="hidden-xs">CONTACT</a>
+                    <a ui-sref="Contact" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">CONTACT</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <a ui-sref="LoginRes" class="hidden-xs get-started-btn btn btn-primary" style="color: white !important" ng-show="!LoginStatus">LOGIN/REGISTER</a>
+                    <a ui-sref="LoginRes" class="visible-xs get-started-btn  btn btn-primary" style="color: white !important" data-toggle="collapse" data-target=".navbar-collapse" ng-show="!LoginStatus">LOGIN/REGISTER</a></li>
+
+
+                <li>
+                    <a ui-sref="LoginRes" ng-click="logout()" class="hidden-xs" ng-show="LoginStatus">Logout</a>
+                    <a ui-sref="LoginRes" ng-click="logout()" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse" ng-show="LoginStatus">Logout</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<!--<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="showOptionOfheader()" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <div class="col-lg-12"><img ui-sref="Index" style="margin-top: -13px;width: 175px;" src="../img/logoM.png" href="#/Index"></div>
+
+
+            </a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right headerFont">
+                <li class="active"><a ui-sref="Index" ng-click="showOptionOfheader()">HOME</a></li>
+                <li><a ui-sref="About">ABOUT US</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">SERVICES <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li><a ui-sref="RecruitmentStaffing">Recruitment Process Outsourcing</a></li>
+                        <li><a ui-sref="Payroll">Payroll Outsourcing</a></li>
+                        <li><a ui-sref="SearchSelection">Search & Selection</a></li>
+                        <li><a ui-sref="TempStaffing">Temporary Staffing</a></li>
+                        <li><a ui-sref="itStaffing">IT Staffing</a></li>
+                    </ul>
+                </li>
+              
+                <li><a ui-sref="team">TEAM</a></li>
+
+                <li><a ui-sref="news">NEWS & EVENTS</a></li>
+                <li><a ui-sref="Blog">BLOG</a></li>
+                <li><a ui-sref="Job">JOB</a></li>
+                <li><a ui-sref="Contact" ng-click="showOptionOfheader()">CONTACT</a></li>
+                <li><a ui-sref="LoginRes" ng-click="showOptionOfheader()" ng-show="!LoginStatus">LOGIN/REGISTER</a></li>
+                <li><a ui-sref="LoginRes" ng-click="logout()" ng-show="LoginStatus">Logout</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>-->

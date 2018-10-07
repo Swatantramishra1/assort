@@ -1,0 +1,96 @@
+﻿<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add Relationship Manager</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Relationship Manager Details</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="jobLocation">Relationship Manager Name</label>
+                                    <input type="text" class="form-control" id="Assort_ClientContactPersonName" ng-model="addRelationship.Assort_ClientContactPersonName" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLocation">Unique Code</label>
+                                    <input type="text" class="form-control" id="AssortClientManagerUniqueCode" ng-model="addRelationship.AssortClientManagerUniqueCode" placeholder="Unique Code">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLocation">Email</label>
+                                    <input type="text" class="form-control" id="Assort_ClientEmail" ng-model="addRelationship.Assort_ClientEmail" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLocation">Password</label>
+                                    <input type="text" class="form-control" id="Relationship_Password" ng-model="addRelationship.Relationship_Password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLocation">Phone No</label>
+                                    <input type="text" pattern="\d*" class="form-control" id="Assort_ClientPNumber" ng-model="addRelationship.Assort_ClientPNumber" placeholder="Phone No" maxlength="15">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="jobLocation">Position</label>
+                                    <input type="text" class="form-control" id="Assort_ClientManagerName" ng-model="addRelationship.Assort_ClientManagerName" placeholder="Position">
+                                </div>
+                                <div class="form-group">
+                                    <label for="jobLocation">Department</label>
+                                    <select class="form-control" ng-model="addRelationship.Assort_department">
+                                        <option selected="selected" >Select Department</option>
+                                        <option value="sales">Sales</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="it">IT</option>
+                                    </select>
+                                    <!--<input type="text" class="form-control" id="Assort_ClientManagerName" ng-model="addRelationship.Assort_department" placeholder="Position">-->
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Add RM Manager</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="jobLocation">Name</label>
+                                            <input type="text" class="form-control" id="AssortClientManager1Name" ng-model="addRelationship.AssortClientManager1Name" placeholder="Name">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="jobLocation">Email</label>
+                                            <input type="text" class="form-control" id="AssortClientManager1Email" ng-model="addRelationship.AssortClientManager1Email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Add RM CEO</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="jobLocation">Name</label>
+                                            <input type="text" class="form-control" id="AssortClientManager2Name" ng-model="addRelationship.AssortClientManager2Name" placeholder="Name">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="jobLocation">Email</label>
+                                            <input type="text" class="form-control" id="Assort_ClientEmailAssortClientManager2Email" ng-model="addRelationship.AssortClientManager2Email" placeholder="Email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="SubmitAddRM()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

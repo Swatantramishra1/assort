@@ -1,0 +1,122 @@
+﻿<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Show Escalation</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">All Escalation List</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" ng-model="filter.search" class="form-control pull-right" placeholder="Search">
+                                <div class="input-group-btn" style="display: none">
+                                    <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover" id="example">
+                            <tr>
+                                <th>Sr</th>
+                                <th>Issue From</th>
+                                <th>Escalation ID</th>
+                                <th>Subject</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                            <tr ng-repeat="issueList in IssueList | filter:filter.search">
+                                <td>{{$index+1}}</td>
+                                <td>{{issueList.ClientEmail != '' ? issueList.ClientEmail : ''}}</td>
+                                <td title="{{issueList.IssueID.length>15 ? issueList.IssueID : '' }}">{{issueList.IssueID.length>15 ? issueList.IssueID.substring(0,10)+'..' : issueList.IssueID}}</td>
+                                <td>{{issueList.IssueSubject}}</td>
+                                <td>{{issueList.IssuState == 'END' ? 'Resolved' : issueList.IssuState}}</td>
+                                <td><input type="button" data-toggle="modal" class="btn btn-success" data-target="#myModal" ng-click="showIssueDetails(issueList)" value="view" /> </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Escalation View</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Escalation ID</label>
+                    <input type="text" disabled value="{{issueDetails.IssueID}}" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" disabled value="{{issueDetails.IssueSubject}}" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    <textarea rows="4" cols="50" disabled class="form-control">
+                        {{issueDetails.IssueBody}}
+                    </textarea>
+
+                </div>
+                <div class="form-group" ng-show="issueReply.length > 0">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Sr</td>
+                                <td>From</td>
+                                <td>Message</td>
+                            </tr>
+                            <tr ng-repeat="item in issueReply">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.ClientEmail}}</td>
+                                <td>{{item.IssueBody.split('On')[0]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="form-group">
+                    <label>Escalation To</label>
+                    <input type="text" disabled value="{{issueDetails.IssuedTo}}" class="form-control" />
+                </div>
+                <!-- <div class="form-group">
+                    <label>Event Type</label>
+                    <input type="text" disabled value="{{issueDetails.EventType}}" class="form-control" />
+                </div> -->
+                <div class="form-group">
+                    <label>Escalation Status</label>
+                    <input type="text" disabled value="{{issueDetails.IssuState}}" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Create At</label>
+                    <input type="text" disabled value="{{issueDetails.IssueCreateTime}}" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="loading" ng-show="isLoader">Loading&#8230;</div>
+
+
+<script>
+</script>

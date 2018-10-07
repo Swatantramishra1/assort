@@ -1,0 +1,255 @@
+﻿<style>
+    .profile-rail-card__member-bg-image {
+        background-position: center;
+        background-size: cover;
+        display: block;
+        height: 80px;
+        margin: -14px 0px 0;
+    }
+    
+    .profile-rail-card__member-photo {
+        border: 2px solid #fff;
+        box-shadow: inset 0 1.5px 3px 0 rgba(0, 0, 0, .15), 0 1.5px 3px 0 rgba(0, 0, 0, .15);
+        margin: -38px auto 12px;
+    }
+    
+    .EntityPhoto-circle-5 {
+        border-radius: 49.9%;
+    }
+    
+    .EntityPhoto-circle-5,
+    .EntityPhoto-circle-5-ghost-person {
+        width: 72px;
+        height: 72px;
+        border: 1px solid transparent;
+        background-clip: content-box;
+        box-sizing: border-box;
+    }
+    
+    .feed-container-theme .tap-target,
+    .feed-container-theme a.disabled {
+        color: inherit;
+        font-weight: initial;
+        text-decoration: none;
+    }
+    
+    .profile-rail-card__actor-link:hover,
+    .profile-rail-card__actor-link:visited {
+        color: #000;
+        text-decoration: none;
+    }
+    
+    a[href],
+    button {
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+    }
+    
+    a:visited {
+        color: #827be9;
+    }
+    
+    .profile-rail-card__actor-link {
+        color: #000;
+        display: block;
+        font-weight: 700;
+    }
+    
+    a {
+        font-weight: 700;
+        background-color: transparent;
+        border: 0;
+        color: #0084bf;
+    }
+    
+    a {
+        margin: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: 0 0;
+    }
+    
+    .mt1,
+    .mv1 {
+        margin-top: 4px;
+    }
+    
+    .Sans-13px-black-55\% {
+        font-weight: 400;
+        color: rgba(0, 0, 0, .55);
+        font-size: 13px;
+    }
+    
+    .Sans-13px-black-100\%,
+    .Sans-13px-black-55\%,
+    .Sans-13px-black-55\%-italic,
+    .Sans-13px-black-55\%-semibold {
+        font-family: Source Sans Pro, Helvetica, Arial, sans-serif, Hiragino Kaku Gothic Pro, Meiryo, Hiragino Sans GB W3, Noto Naskh Arabic, Droid Arabic Naskh, Geeza Pro, Simplified Arabic, Noto Sans Thai, Thonburi, Dokchampa, Droid Sans Thai, Droid Sans Fallback, -apple-system, '.SFNSDisplay-Regular', Heiti SC, Microsoft Yahei, Segoe UI;
+        line-height: 16px;
+    }
+    
+    .boxDiv {
+        padding-top: 14px;
+        box-shadow: 1px 1px 2px 2px #c1c1c1;
+        border-radius: 4px;
+        background-color: white;
+    }
+    
+    .boxImage {
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+</style>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 150px;min-height:500px">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 boxDiv">
+            <div class="row" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+                <div style="background-image:url(https://media.licdn.com/media/p/6/005/099/226/0beb97a.jpg)" class="profile-rail-card__member-bg-image boxImage">
+                </div>
+                <input type="file" id="imgupload" ng-file-select="onFileSelect($files)" style="visibility:hidden" accept=".png,.jpg,.jpeg" />
+                <a data-control-name="identity_profile_photo" id="ember2926" class="ember-view">
+                    <img style="border-radius: 50%;margin-left: 41%;" class="lazy-image feed-s-identity-module__member-photo profile-rail-card__member-photo EntityPhoto-circle-5 loaded" alt="Swatantra Mishra" height="64" width="64" id="OpenImgUpload" src="{{userData.Candidate_Image}}"
+                        ng-click="UploadImage()">
+                </a>
+                <a data-control-name="identity_welcome_message" id="ember2935" class="tap-target feed-s-identity-module__actor-link profile-rail-card__actor-link ember-view" style="text-align:center">
+                    {{userData.FName}}
+                </a>
+                <p class="identity-headline Sans-13px-black-55% mt1" style="text-align:center">{{userData.JobHeader}}</p>
+            </div>
+            <div class="row" style="text-align: center;margin-top: 4%;border-bottom: 1px solid rgba(0,0,0,.15);">
+                <a href="#" style="text-align:center">119</a>
+                <p>Who's viewed your profile</p>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 boxDiv">
+            <div class="row" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+                <div class="col-lg-12" style="margin-bottom: 10px;font-weight: 600;cursor:pointer" ng-click="ViewContent('Profile')">
+                    Profile
+                </div>
+
+            </div>
+            <div class="row" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+
+                <div class="col-lg-12" style="margin-bottom: 10px;font-weight: 600;margin-top:10px;cursor:pointer" ng-click="ViewContent('appliedJob')">
+                    Applied Job
+                </div>
+            </div>
+            <div class="row" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+
+                <div class="col-lg-12" style="margin-bottom: 10px;font-weight: 600;margin-top:10px;cursor:pointer" ng-click="ViewContent('uploadResume')">
+                    Upload Resume
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 boxDiv" ng-show="ViewPageVal.profileView">
+            <form name="userForm" ng-submit="Submit()" novalidate>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                    <label>First Name</label>
+                    <input class="form-control" type="text" required name="name" ng-model="userData.FName" />
+                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" ng-model="userData.LName" />
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control" ng-model="userData.Gender">
+                        <option value="0" disabled> Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHERS">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date Of Birth</label>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control" ng-model="userData.DOB">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.jobheader.$invalid && !userForm.jobheader.$pristine }">
+                    <label>Job Header</label>
+                    <input class="form-control" type="text" name="jobheader" ng-model="userData.JobHeader" />
+                    <p ng-show="userForm.jobheader.$invalid && !userForm.jobheader.$pristine" class="help-block">You job header required.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.mobile.$invalid && !userForm.mobile.$pristine }">
+                    <label>Mobile No</label>
+                    <input class="form-control" type="text" required name="mobile" ng-model="userData.MobileNo" />
+                    <p ng-show="userForm.mobile.$invalid && !userForm.mobile.$pristine" class="help-block">You mobile no required.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.experience.$invalid && !userForm.experience.$pristine }">
+                    <label>Experience</label>
+                    <input class="form-control" type="text" required name="experience" ng-model="userData.experience" />
+                    <p ng-show="userForm.experience.$invalid && !userForm.experience.$pristine" class="help-block">You experience required.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.ctc.$invalid && !userForm.ctc.$pristine }">
+                    <label>Expected CTC</label>
+                    <input class="form-control" type="number" required name="ctc" ng-model="userData.expected_ctc" />
+                    <p ng-show="userForm.ctc.$invalid && !userForm.ctc.$pristine" class="help-block">You Expected ctc required.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : userForm.location.$invalid && !userForm.location.$pristine }">
+                    <label>Location</label>
+                    <input class="form-control" type="text" required name="location" ng-model="userData.present_location" />
+                    <p ng-show="userForm.location.$invalid && !userForm.location.$pristine" class="help-block">You location no required.</p>
+                </div>
+                <div class="form-group">
+                    <label>Skills</label>
+                    <input class="form-control" type="text" required name="ctc" ng-model="userData.skills" />
+
+                </div>
+
+                <div class="form-group pull-right">
+                    <input type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" value="Submit" />
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 boxDiv" ng-show="ViewPageVal.appliedJob">
+            <table class="table table-responsive table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr</th>
+                        <th>Job Title</th>
+                        <th>Applied Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="list in getApplieJobList" ng-show="list.Title != null">
+                        <td>{{$index+1}}</td>
+                        <td ng-click="showJobView(list.JobID)" style="cursor:pointer">{{list.Title}}</td>
+                        <td>{{list.AppliedDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 boxDiv" ng-show="ViewPageVal.uploadResume">
+            <div class="form-group">
+                <label>Upload Resume</label>
+                <input type="file" id="resume" class="form-control" />
+
+
+            </div>
+            <div class="form-group">
+                <label>Download Resume</label>
+                <a href="{{userData.ResumeUrl}}" target="_blank">Resume</a>
+
+
+            </div>
+            <div class="form-group">
+                <input type="button" id="resume" class="btn btn-success" ng-click="uploadresume()" value="Upload Resume" />
+            </div>
+        </div>
+
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" integrity="sha256-I/m6FhcACNYmRoqn1xUnizh6S7jOJsTq+aiJ6BtE2LE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js" integrity="sha256-7Ls/OujunW6k7kudzvNDAt82EKc/TPTfyKxIE5YkBzg=" crossorigin="anonymous"></script>
+<script>
+    $('.datepicker').datepicker();
+</script>

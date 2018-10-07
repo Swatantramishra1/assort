@@ -1,0 +1,149 @@
+﻿<style>
+    div#example1_paginate {
+        text-align: right;
+        margin-top: -26px;
+    }
+    
+    div#example1_filter {
+        text-align: right;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Relationship Manager List</h3>
+                </div>
+                <!-- /.box-heaer -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <div id="example1_filter" class="dataTables_filter"><input type="text" ng-model="filter.search" class="form-control input-sm" placeholder="Saerch By Name , emailID"></div>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive no-padding">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Sr</th>
+                                    <th>Unique Code</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile No</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="item in getRelationshipManager | filter:filter.search">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.AssortClientManagerUniqueCode}}</td>
+                                    <td>{{item.Assort_ClientContactPersonName}}</td>
+                                    <td>{{item.Assort_ClientEmail}}</td>
+                                    <td>{{item.Assort_ClientPNumber}}</td>
+                                    <td>
+
+                                        <input type="button" data-toggle="modal" data-target="#myModal" ng-click="ShowRelationShip(item)" value="View" />
+                                        <input type="button" ng-click="deleteRM(item,$index)" value="Delete" />
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Relationship Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Unique Code</label>
+                        <input type="text" ng-model="addRelationship.AssortClientManagerUniqueCode" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" ng-model="addRelationship.Assort_ClientContactPersonName" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email ID</label>
+                        <input type="text" ng-model="addRelationship.Assort_ClientEmail" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Mobile No</label>
+                        <input type="text" ng-model="addRelationship.Assort_ClientPNumber" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Degignation</label>
+                        <input type="text" ng-model="addRelationship.Assort_ClientManagerName" class="form-control" />
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">RM Manager</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="jobLocation">Name</label>
+                                <input type="text" class="form-control" id="AssortClientManager2Name" ng-model="addRelationship.AssortClientManager1Name" placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jobLocation">Email</label>
+                                <input type="text" class="form-control" id="Assort_ClientEmailAssortClientManager2Email" ng-model="addRelationship.AssortClientManager1Email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">RM CEO</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="jobLocation">Name</label>
+                                <input type="text" class="form-control" id="AssortClientManager2Name" ng-model="addRelationship.AssortClientManager2Name" placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jobLocation">Email</label>
+                                <input type="text" class="form-control" id="Assort_ClientEmailAssortClientManager2Email" ng-model="addRelationship.AssortClientManager2Email" placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="SubmitAddRM()">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        // $("#example1").DataTable();
+        $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<div class="loading" ng-show="isLoader">Loading&#8230;</div>

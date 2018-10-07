@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+    body,
+    h1 {
+        font-family: "Raleway", sans-serif
+    }
+    
+    body,
+    html {
+        height: 100%
+    }
+    
+    .bgimg {
+        background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<body>
+
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+        <div class="w3-display-topleft w3-padding-large w3-xlarge">
+            <img style="width: auto;height: 68px;" src="../img/logoM.png" href="#/Index">
+        </div>
+        <div class="w3-display-middle">
+            <h1 class="w3-jumbo w3-animate-top header_text">COMING SOON</h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <p class="w3-large w3-center sub_header_text">
+
+            </p>
+        </div>
+        <div class="w3-display-bottomleft w3-padding-large">
+            Powered by <a href="http://assortstaffing.com/#/Index" target="_blank">assort staffing</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        $(document).ready(function() {
+            var postData = {
+                IssueStatus: {
+                    IssueID: getUrlParameter('id'),
+                    Status: getUrlParameter('status') == 'no' ? "OPEN" : 'END'
+                }
+            }
+
+            $.ajax({
+                url: 'http://assort.azurewebsites.net/Service/InvestorFundaServices.svc/UpdateIssueStatus',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                processData: false,
+                async: false,
+                data: JSON.stringify(postData),
+                success: function(data) {
+                    if (getUrlParameter('status') == 'no') {
+                        $('.header_text').text('We will be looking for your issue, right away')
+                    } else {
+                        $('.header_text').text('Thanks for your response. We are happy to help you')
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

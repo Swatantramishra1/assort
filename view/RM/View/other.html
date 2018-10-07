@@ -1,0 +1,107 @@
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Other Details</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="jobLocation">Select Client</label>
+                    <select ng-model="other.ID" class="form-control" ng-change="getClient()">
+                            <option value="{{client.Assort_ClientID}}"  ng-repeat="client in clientlists">{{client.Assort_ClientName}}</option>
+                    </select>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label for="jobLocation">No. of employees</label>
+                    <input type="text" ng-model="other.NoOfEmpl" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Locations</label>
+                    <input type="text" ng-model="other.Location" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">No. of employees covered in PF/ESIC</label>
+                    <input type="text" ng-model="other.NoOfEmplPF_ESIC" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Health Report</label>
+                    <input type="text" ng-model="other.HealthRpt" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="jobLocation">Exits/Resigns</label>
+                    <input type="text" ng-model="other.Exits" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="jobLocation">CLRA Status</label>
+                    <input type="text" ng-model="other.CLRA_Status" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="jobLocation">Open positions shared</label>
+                    <input type="text" ng-model="other.open_positions_share" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="jobLocation">Joinees</label>
+                    <input type="text" ng-model="other.Joinees" class="form-control" />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="jobLocation">Invoices</label>
+                    <input type="text" ng-model="other.Invoices" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Agreement Date</label>
+                    <input type="text" id="Agreements_Dates" ng-model="other.Agreements_Dates" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="button" ng-click="other_submit()" class="btn btn-success" value="Submit" />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Upload Documents</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="jobLocation">Select Client</label>
+                    <select ng-model="other.ID" class="form-control">
+                            <option value="{{client.Assort_ClientID}}"  ng-repeat="client in clientlists">{{client.Assort_ClientName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Select Docs Type</label>
+                    <select ng-model="other.docsType" class="form-control">
+                            <option value="{{doc.val}}"  ng-repeat="doc in docsType">{{doc.data}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Enter Doc Name</label>
+                    <input type="text" class="form-control" ng-model="other.docName">
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Agreement</label>
+                    <input type="file" id="doc111" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="button" ng-click="Excel()" class="btn btn-success" value="Submit Agreement" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $(function() {
+        $("#Agreements_Dates").datepicker("option", "showAnim", "fold");
+
+    });
+</script>

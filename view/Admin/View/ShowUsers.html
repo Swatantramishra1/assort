@@ -1,0 +1,74 @@
+﻿<style>
+    div#example1_paginate {
+        text-align: right;
+        margin-top: -26px;
+    }
+    
+    div#example1_filter {
+        text-align: right;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Candidate List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <div id="example1_filter" class="dataTables_filter"><input type="text" ng-model="filter.search" class="form-control input-sm" placeholder="Saerch By Name , emailID"></div>
+                        </div>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Sr</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile No</th>
+                                    <th>Gender</th>
+                                    <th>Resume</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="item in userLists | filter:filter.search">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.FName + item.LName}}</td>
+                                    <td>{{item.EmailID}}</td>
+                                    <td>{{item.MobileNo}}</td>
+                                    <td>{{item.Gender}}</td>
+                                    <td><a href="{{item.ResumeUrl}}" ng-if="item.ResumeUrl != ''" target="_blank">Resume</a>
+                                        <span ng-if="item.ResumeUrl.length == ''">N/A</span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function() {
+        // $("#example1").DataTable();
+        $('#example1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>

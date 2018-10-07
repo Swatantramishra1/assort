@@ -1,0 +1,393 @@
+﻿<link href="https://static.naukimg.com/s/4/101/c/common_v57.min.css" rel="stylesheet" />
+<link href="https://static.naukimg.com/s/4/109/c/srpStyle_v23.min.css" rel="stylesheet" />
+<style>
+    .row .savejob em {
+        height: 16px;
+        background-position: 0 -30px;
+        position: absolute;
+        top: 50%;
+        right: 7px;
+        margin-top: -3px;
+    }
+    
+    .cluster {
+        overflow: hidden;
+        margin-right: 10px;
+        margin-top: 55px;
+        width: 100% !important;
+    }
+    
+    .width25 {
+        width: 25% !important;
+    }
+    
+    .width74 {
+        width: 74% !important;
+    }
+    
+    li {
+        display: inline-block;
+    }
+    
+    .container>.srp_container {
+        position: relative;
+        width: 100% !important;
+    }
+    
+    .container>.srp_container {
+        margin-top: 75px !important;
+    }
+    
+    .checkbox {
+        padding-left: 20px;
+    }
+    
+    .checkbox label {
+        display: inline-block;
+        position: relative;
+        padding-left: 5px;
+    }
+    
+    .checkbox label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        left: 0;
+        margin-left: -20px;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+        background-color: #fff;
+        -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+        -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+        transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    }
+    
+    .checkbox label::after {
+        display: inline-block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 0;
+        top: 0;
+        margin-left: -20px;
+        padding-left: 3px;
+        padding-top: 1px;
+        font-size: 11px;
+        color: #555555;
+    }
+    
+    .checkbox input[type="checkbox"] {
+        opacity: 0;
+    }
+    
+    .checkbox input[type="checkbox"]:focus+label::before {
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+    
+    .checkbox input[type="checkbox"]:checked+label::after {
+        font-family: 'FontAwesome';
+        content: "\f00c";
+    }
+    
+    .checkbox input[type="checkbox"]:disabled+label {
+        opacity: 0.65;
+    }
+    
+    .checkbox input[type="checkbox"]:disabled+label::before {
+        background-color: #eeeeee;
+        cursor: not-allowed;
+    }
+    
+    .checkbox.checkbox-circle label::before {
+        border-radius: 50%;
+    }
+    
+    .checkbox.checkbox-inline {
+        margin-top: 0;
+    }
+    
+    .checkbox-primary input[type="checkbox"]:checked+label::before {
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+    
+    .checkbox-primary input[type="checkbox"]:checked+label::after {
+        color: #fff;
+    }
+    
+    .checkbox-danger input[type="checkbox"]:checked+label::before {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+    
+    .checkbox-danger input[type="checkbox"]:checked+label::after {
+        color: #fff;
+    }
+    
+    .checkbox-info input[type="checkbox"]:checked+label::before {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+    }
+    
+    .checkbox-info input[type="checkbox"]:checked+label::after {
+        color: #fff;
+    }
+    
+    .checkbox-warning input[type="checkbox"]:checked+label::before {
+        background-color: #f0ad4e;
+        border-color: #f0ad4e;
+    }
+    
+    .checkbox-warning input[type="checkbox"]:checked+label::after {
+        color: #fff;
+    }
+    
+    .checkbox-success input[type="checkbox"]:checked+label::before {
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+    }
+    
+    .checkbox-success input[type="checkbox"]:checked+label::after {
+        color: #fff;
+    }
+    
+    .radio {
+        padding-left: 20px;
+    }
+    
+    .radio label {
+        display: inline-block;
+        position: relative;
+        padding-left: 5px;
+    }
+    
+    .radio label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        left: 0;
+        margin-left: -20px;
+        border: 1px solid #cccccc;
+        border-radius: 50%;
+        background-color: #fff;
+        -webkit-transition: border 0.15s ease-in-out;
+        -o-transition: border 0.15s ease-in-out;
+        transition: border 0.15s ease-in-out;
+    }
+    
+    .radio label::after {
+        display: inline-block;
+        position: absolute;
+        content: " ";
+        width: 11px;
+        height: 11px;
+        left: 3px;
+        top: 3px;
+        margin-left: -20px;
+        border-radius: 50%;
+        background-color: #555555;
+        -webkit-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        -o-transform: scale(0, 0);
+        transform: scale(0, 0);
+        -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+        -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+        -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+        transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    }
+    
+    .radio input[type="radio"] {
+        opacity: 0;
+    }
+    
+    .radio input[type="radio"]:focus+label::before {
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+    
+    .radio input[type="radio"]:checked+label::after {
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        -o-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+    
+    .radio input[type="radio"]:disabled+label {
+        opacity: 0.65;
+    }
+    
+    .radio input[type="radio"]:disabled+label::before {
+        cursor: not-allowed;
+    }
+    
+    .radio.radio-inline {
+        margin-top: 0;
+    }
+    
+    .radio-primary input[type="radio"]+label::after {
+        background-color: #428bca;
+    }
+    
+    .radio-primary input[type="radio"]:checked+label::before {
+        border-color: #428bca;
+    }
+    
+    .radio-primary input[type="radio"]:checked+label::after {
+        background-color: #428bca;
+    }
+    
+    .radio-danger input[type="radio"]+label::after {
+        background-color: #d9534f;
+    }
+    
+    .radio-danger input[type="radio"]:checked+label::before {
+        border-color: #d9534f;
+    }
+    
+    .radio-danger input[type="radio"]:checked+label::after {
+        background-color: #d9534f;
+    }
+    
+    .radio-info input[type="radio"]+label::after {
+        background-color: #5bc0de;
+    }
+    
+    .radio-info input[type="radio"]:checked+label::before {
+        border-color: #5bc0de;
+    }
+    
+    .radio-info input[type="radio"]:checked+label::after {
+        background-color: #5bc0de;
+    }
+    
+    .radio-warning input[type="radio"]+label::after {
+        background-color: #f0ad4e;
+    }
+    
+    .radio-warning input[type="radio"]:checked+label::before {
+        border-color: #f0ad4e;
+    }
+    
+    .radio-warning input[type="radio"]:checked+label::after {
+        background-color: #f0ad4e;
+    }
+    
+    .radio-success input[type="radio"]+label::after {
+        background-color: #5cb85c;
+    }
+    
+    .radio-success input[type="radio"]:checked+label::before {
+        border-color: #5cb85c;
+    }
+    
+    .radio-success input[type="radio"]:checked+label::after {
+        background-color: #5cb85c;
+    }
+    
+    .cluster {
+        width: 100% !important;
+    }
+</style>
+<div class="row" style="margin-top: 120px">
+    <div class="col-lg-12 col-xs-12 col-md-12">
+        <div class=" fl col-lg-3  col-xs-12 col-md-3">
+            <div class="refine">
+                <h3 class="small_title">Refine Results</h3>
+                <form name="clstrFrm" id="clstrFrm">
+
+                    <div id="acord" class="acord" style="display: block;">
+
+                        <h3 class="acord_head acordDown"><span class="icon"></span>Location</h3>
+
+                        <div class="acord_cont open" style="display: block;">
+                            <div class="checkbox checkbox-circle" title="{{item}}" ng-repeat="item in tempLocationFilter">
+                                <input id="checkbox{{$index}}" type="checkbox" ng-click="jobFilterView(item)">
+                                <label for="checkbox{{$index}}">
+                                {{item}}
+                            </label>
+                            </div>
+
+                            <span head="Location" name="qcl[]">more</span>
+                        </div>
+
+                    </div> <input type="hidden" id="clstrVals" name="qclus" value="">
+                </form>
+            </div>
+        </div>
+        <div class=" fl col-lg-9  col-xs-12 col-md-9">
+            <div class="srp_container fl" style="background-color: white">
+                <div class="col-md-12 col-xs-12 col-lg-12 srp_head">
+                    <div class="srp_count">
+                        <div class="count">
+                            <h1 class="small_title">
+
+                                <input type="text" ng-model="search" class="form-control" placeholder="All of {{joblists.length}} Jobs in India" />
+                            </h1>
+                        </div>
+
+                    </div>
+                </div>
+                <!--<div class="srp_fixed">
+                    <form id="frmSSA" class="save_search" name="saveSearchForm">
+                        <div id="ssaMsgBar" class="msgBar dspN">
+                            <div class="cnt"></div>
+                        </div> <span class="getJobText">Get jobs in Inbox -</span>
+                        <div class="details ">
+                            <div class="field searchName"> <input name="janame" placeholder="Name your search" rel="required:1023,specialChar:1027" maxlength="100"> <i class="erLbl" id="janame_err"></i> </div>
+                            <div class="field email"> <input name="email" placeholder="Email ID" rel="required:1024,custom:1001" maxlength="100"> <i class="erLbl" id="email_err"></i> </div>
+                        </div> <input id="ssaSbt" name="save" type="submit" value="Save"> </form>
+                </div>-->
+
+                <div ng-click="showJobView(joblist.JobID)" type="tuple" ng-repeat="joblist in joblistsByAll | filter:search " ng- class="col-md-12 col-xs-12 col-lg-12" ng-show="joblist.IsDelete == 'False'">
+                    <a count="1" class="content" target="_blank">
+                        <ul>
+                            <li itemprop="title" title="Architect" class="desig">{{joblist.Job_Title}}</li>
+                        </ul>
+                        <span itemprop="hiringOrganization" class="org" ng-bind-html="joblist.Job_Description.length > 300 ? joblist.Job_Description.substring(0,300)+'...' : joblist.Job_Description"></span>
+
+                        <span itemprop="experienceRequirements" class="exp"><em></em>{{joblist.Job_Exp_Min}} - {{joblist.Job_Exp_Max}} yrs</span>
+                        <span class="loc"><em></em><span itemprop="jobLocation"> 
+                                                          <ul>
+                                                              <li>{{joblist.Job_Location}}</li>
+                                                          
+                                                           </ul>
+
+</span>
+                        </span>
+                        <div class="more">
+                            <span class="label">Keyskills:</span>
+                            <div class="desc">
+                                <span itemprop="skills" class="skill">
+                                    <ul>
+                                        <li>{{joblist.SkillList}}</li>
+                                        <!--<li ng-repeat="jobSkill in jobSkillslists" ng-show="jobSkill.JobID === joblist.JobID">
+                                            {{jobSkill.Name}} <font ng-show="!$last">,</font>
+                                        </li>-->
+                                        </ul>
+
+</span>
+                            </div>
+                        </div>
+                    </a> <span class="action jobType classified" title="Classified Job"><em></em></span>
+                    <div class="other_details" style="padding-left:10px">
+                        <span title=" Save this job " class="action savejob fav  favReady" jid="{{joblist.JobID}}"><em></em></span>
+                        <span itemprop="baseSalary" class="salary  dollar "><em></em>  Not disclosed </span>
+                        <div class="rec_details">
+                            Posted by
+                            <a class="rec_img" target="_blank" href="#"> </a>
+                            <a title="Job Posted by  HR " class="rec_name active" target="_blank" href="#">  HR  </a> , <span class="date">{{joblist.Job_PostedDate | moment:'fromNow'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

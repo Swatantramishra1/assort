@@ -1,0 +1,115 @@
+﻿<style>
+    .jonTitle {
+        font-weight: 700;
+        color: #e33939;
+    }
+    
+    .subJobTitle {
+        color: #e33939 !important;
+        margin-top: -7px;
+        margin-bottom: 12px;
+    }
+    
+    .marginBottom {
+        margin-bottom: 20px;
+    }
+</style>
+<div id="page" class="mm-page mm-slideout marginBottom" style="margin-top: 130px">
+
+    <div class="page-hero" style="background-image: url(images/hero-1.jpg);">
+        <div class="container">
+            <div class="row ">
+                <div class="col-xs-12">
+                    <div class="page-hero-content">
+                        <h3 class="page-title jonTitle">{{jobDetailsInfo.JobLists[0].Job_Title}}</h3>
+                        <div class="page-hero-details subJobTitle">
+                            <span class="item-badge job-type-full-time">Full time</span>
+                            <span class="entry-location">{{jobDetailsInfo.LocationLists[0].Name}}</span>
+                            <span class="entry-company">{{jobDetailsInfo.JobLists[0].CompanyName}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main main-elevated">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-8 col-xs-12">
+                    <div class="content-wrap">
+                        <article class="entry marginBottom">
+                            <div class="entry-content" id="jobContent">
+
+                            </div>
+                        </article>
+
+                        <a ng-click="apply()" class="btn btn-block btn-success">Apply for this job</a>
+                    </div>
+
+
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-xs-12">
+                    <div class="sidebar">
+                        <aside class="widget widget_ci-apply-button-widget hidden-xs">
+                            <a ng-click="apply()" class="btn btn-block btn-success">
+                                Apply for this job
+                            </a>
+                        </aside>
+                        <aside class="widget widget_ci-company-info-widget">
+                            <h3 class="widget-title">Company Information</h3>
+
+                            <div class="card-info">
+                                <div class="card-info-media">
+
+                                    <div class="card-info-details">
+                                        <p class="card-info-title">{{jobDetailsInfo.JobLists[0].CompanyName}}</p>
+                                        <p class="card-info-link">
+                                            <a href="">{{jobDetailsInfo.CompanyLists[0].CompanyUrl}}</a>
+                                        </p>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </aside>
+                        <aside class="widget widget_ci-company-info-widget">
+                            <h3 class="widget-title">Experience</h3>
+
+                            <div class="card-info">
+                                <div class="card-info-media">
+
+                                    <div class="card-info-details">
+                                        <p class="card-info-title">{{jobDetailsInfo.JobLists[0].Job_Exp_Min}} - {{jobDetailsInfo.JobLists[0].Job_Exp_Max}} Years</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </aside>
+                        <aside class="widget widget_ci-company-info-widget">
+                            <h3 class="widget-title">Salary</h3>
+
+                            <div class="card-info">
+                                <div class="card-info-media">
+
+                                    <div class="card-info-details">
+                                        <p class="card-info-title">{{jobDetailsInfo.JobLists[0].Job_Sal_Min}} - {{jobDetailsInfo.JobLists[0].Job_Sal_Max}} Lakhs P.A</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>

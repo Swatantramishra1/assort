@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" id="mainHtml" ng-cloak>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="package/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="package/style/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="style/custome.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />-->
+    <link href="style/angular-auto-complete.css" rel="stylesheet" />
+    <link href="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <style>
+        .container-fluid {
+            padding-right: 15px;
+            padding-left: 0px !important;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111665934-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111665934-1');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PQCCJ8G');
+    </script>
+    <!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+    <!-- Header -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQCCJ8G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="wrapper">
+        <div ng-include="'view/header.html'"></div>
+
+        <div class="container-fluid firstRow" style="background-color:#f0f0f0;" ui-view></div>
+
+
+        <div ng-include="'view/footer.html'" style="margin-top: 50px"></div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Where do you wish to go ? ({{Message}} second)</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <input type="button" class="btn btn-default form-control btnTheme themeFontFamily themeFontWeight" value="USA" ng-click="redirectClick('USA')" />
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <input type="button" class="btn btn-default form-control btnTheme themeFontFamily themeFontWeight" value="INDIA" ng-click="redirectClick('Index')" />
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <input type="button" class="btn btn-default form-control btnTheme themeFontFamily themeFontWeight" value="MIDDLE EAST" ng-click="redirectClick('MidelEast')" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Packages -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="package/script/angular.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js" integrity="sha256-/GKyJ0BQJD8c8UYgf7ziBrs/QgcikS7Fv/SaArgBcEI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+    <!--<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>-->
+    <script src="package/script/angular-auto-complete.js"></script>
+    <script src="package/script/jquery-ui.min.js"></script>
+    <script src="package/script/jquery.flexslider-min.js"></script>
+    <script src="package/script/angular-flexslider.js"></script>
+    <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
+    <script src="package/script/angular-animate.min.js"></script>
+    <script src="package/script/angular-aria.min.js"></script>
+    <script src="package/script/angular-messages.min.js"></script>
+    <script src="package/script/angular-ui-router.js"></script>
+    <script src="package/script/Angular_LocalStorage.js"></script>
+    <script src="http://momentjs.com/downloads/moment.js"></script>
+    <!-- Custome JS -->
+    <script src="script/module/config.js"></script>
+    <script src="script/module/app.js"></script>
+    <script src="script/module/app.router.js"></script>
+    <script src="script/controller/auth.Ctrl.js"></script>
+    <script src="script/controller/common.js"></script>
+    <script src="script/controller/candidate.Ctrl.js"></script>
+    <script src="script/Service/Login.Srv.js"></script>
+    <script src="script/Service/Main.Srv.js"></script>
+
+
+
+
+</body>
+
+</html>

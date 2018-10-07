@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <style>
+        .ta-scroll-window.ng-scope.ta-text.ta-editor.clearfix.border-around.container {
+            width: 100%;
+            margin-top: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.44);
+        }
+
+        textarea.ta-bind {
+            width: 100%;
+        }
+
+        div#taTextElement1930502284364164 {
+            border: 1px solid gray;
+        }
+    </style>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Create Issues</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="jobtitle">To</label>
+                                <input type="text" class="form-control" id="to" disabled ng-model="IssueCreate.IssuedTo" placeholder="Enter To ">
+                            </div>
+                            <div class="form-group">
+                                <label for="jobpostedby">Add Subject</label>
+                                <input type="text" class="form-control" id="subject" ng-model="IssueCreate.IssueSubject" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="jobdiscription">Body</label>
+                                <div class="col- lg-12 lighter">
+                                    <textarea rows="4"  class="form-control" ng-model="IssueCreate.IssueBody">
+                                    
+                                    </textarea>
+                                  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobpostedby">Add Attachments</label>
+                                <input type="file" class="form-control" id="file" ng-model="IssueCreate.IssueAttachmentUrl" placeholder="Attachments">
+                            </div>
+                     
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" ng-click="createIssue()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

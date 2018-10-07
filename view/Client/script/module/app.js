@@ -1,0 +1,1 @@
+﻿var app = angular.module("Adminapp", ['ui.router', 'ngStorage', 'textAngular', 'ngSanitize']);
