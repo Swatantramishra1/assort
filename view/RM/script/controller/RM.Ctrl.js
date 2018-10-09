@@ -37,13 +37,14 @@
             reader.onload = function () {
                 var fileData = reader.result;
                 var wb = XLSX.read(fileData, { type: 'binary' });
-
+                let tempRes = [];
                 wb.SheetNames.forEach(function (sheetName) {
-                    var rowObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
-                    var jsonObj = JSON.stringify(rowObj);
-                    $scope.rooData.clientDash = jsonObj;
-                    console.log(jsonObj)
+                    rowObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheetName]);
+                    rowObj = { [sheetName]: rowObj }
+                    tempRes.push(rowObj);
                 })
+                console.log(tempRes)
+                $scope.rooData.clientDash = JSON.stringify(tempRes);
             };
             reader.readAsBinaryString(input.files[0]);
         };
