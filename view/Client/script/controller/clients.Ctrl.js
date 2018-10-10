@@ -1,34 +1,44 @@
 ﻿app.controller('ClientsCtrl', ['$scope', '$rootScope', '$localStorage', '$timeout', '$interval', '$filter', '$state', 'JobService', '$sce',
-    function($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, JobService, $sce) {
+    function ($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, JobService, $sce) {
         $scope.isLoader = true;
         $scope.userDataCommon = JSON.parse(localStorage.getItem("data"));
 
         $scope.addCard = [{}]
 
-
+        
         var getClientCard = JobService.getClientDash.getPromise($scope.userDataCommon.UR_ID);
         getClientCard.then(
             // OnSuccess function
-            function(answer) {
+            function (answer) {
 
-                
-                    $scope.addCard = JSON.parse(answer.data.GetClientDashListDVal1Result[0].ClientDash);
+
+                $scope.addCard = JSON.parse(answer.data.GetClientDashListDVal1Result[0].ClientDash);
 
 
             },
             // OnFailure function
-            function(reason) {
+            function (reason) {
 
             }
         );
 
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        $scope.number_color = {
+            "color": getRandomColor()
+        }
 
-
-        $scope.loaddata = function() {
+        $scope.loaddata = function () {
             var getSkillsCategoryList = JobService.getSkillsCategory.getPromise();
             getSkillsCategoryList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetSkillsCategoryResult.ResponseCode == 0) {
 
@@ -42,7 +52,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -55,7 +65,7 @@
             var getCompanyList = JobService.getCompanyList.getPromise();
             getCompanyList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetCompanyResult.ResponseCode == 0) {
 
@@ -69,14 +79,14 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
             var getSkillsNameList = JobService.getSkillsName.getPromise();
             getSkillsNameList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetSkillsNameResult.ResponseCode == 0) {
 
@@ -90,14 +100,14 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
             var getIndustryList = JobService.getIndustryList.getPromise();
             getIndustryList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetIndustryListResult.ResponseCode == 0) {
 
@@ -111,14 +121,14 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
             var getJobLocationList = JobService.getJobLocation.getPromise();
             getJobLocationList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetLocationResult.ResponseCode == 0) {
 
@@ -132,7 +142,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -142,7 +152,7 @@
             var getOtherDetails = JobService.getOtherDetails.getPromise($scope.userDataCommon.UR_ID);
             getOtherDetails.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetOtherDetailsResult.ResponseCode == 0) {
 
@@ -169,13 +179,13 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
                     swal("Error", "Some thing went wrong. Please try again !", "error");
                 }
             );
         }
 
-        $scope.trustSrc = function(src) {
+        $scope.trustSrc = function (src) {
             return $sce.trustAsResourceUrl(src);
         }
         if ($state.current.url == "/Addjob" || $state.current.name == "Addjob") {
@@ -208,7 +218,7 @@
             var getJobListClientByID = JobService.getJobListClientByID.getPromise($scope.userDataCommon.UR_ID);
             getJobListClientByID.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     if (answer.data.GetJobClientListResult.ResponseCode == 0) {
 
@@ -221,7 +231,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -245,7 +255,7 @@
             var clientList = JobService.clientList.getPromise($scope.userDataCommon.UR_ID);
             clientList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     if (answer.data.GetclientListResult.ResponseCode == 0) {
 
@@ -260,21 +270,21 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
             var getRmList = JobService.getRmList.getPromise();
             getRmList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     if (answer.data.GetRelationshipManagerResult.ResponseCode == 0) {
                         $scope.getRelationshipManager = answer.data.GetRelationshipManagerResult.Result;
                     }
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -284,7 +294,7 @@
             var getissueList = JobService.getissueByClient.getPromise($scope.userDataCommon.UR_ID);
             getissueList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     if (answer.data.GetIssueByClientResult.ResponseCode == 0) {
 
@@ -298,7 +308,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
@@ -308,7 +318,7 @@
             var getDocList = JobService.getDocList.getPromise($scope.userDataCommon.UR_ID);
             getDocList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     if (answer.data.GetDocsListResult.ResponseCode == 0) {
 
@@ -322,21 +332,21 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
 
-        $scope.showIssueDetails = function(item) {
+        $scope.showIssueDetails = function (item) {
             $scope.issueDetails = item;
         }
 
-        $scope.getClientDetails = function() {
+        $scope.getClientDetails = function () {
             var clientList = JobService.clientList.getPromise($scope.userDataCommon.UR_ID);
             clientList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
 
                     if (answer.data.GetclientListResult.ResponseCode == 0) {
@@ -359,19 +369,19 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
         $scope.getClientDetails();
-        $scope.getRmDetails = function(RMID) {
+        $scope.getRmDetails = function (RMID) {
             $scope.isLoader = true;
 
             var getRmList = JobService.getRmList.getPromise(RMID);
             getRmList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
 
                     if (answer.data.GetRelationshipManagerResult.ResponseCode == 0) {
@@ -385,12 +395,12 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
-        $scope.showjobs = function(joblist) {
+        $scope.showjobs = function (joblist) {
 
             var Industryindex = $scope.getIndustryLists.map((cur, ind) => { if (cur.JobID == joblist.jobID) return ind }).filter((item) => {
                 return item != undefined
@@ -423,10 +433,10 @@
 
 
         $scope.numberExp = 20;
-        $scope.getNumberAsArray = function(number) {
+        $scope.getNumberAsArray = function (number) {
             return new Array(number);
         }
-        $scope.SubmitJob = function() {
+        $scope.SubmitJob = function () {
             $scope.isLoader = true;
 
             $rootScope.job.LocationID = $rootScope.job.LocationID.join(',');
@@ -441,7 +451,7 @@
             var createJob = JobService.createJob.PostPromise(postData);
             createJob.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     swal("Success", "job created successfully  !", "success");
                     if (answer.data.GetLocationResult.ResponseCode == 0) {
@@ -456,32 +466,32 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
 
         }
-        $scope.createIssue = function() {
+        $scope.createIssue = function () {
             $scope.isLoader = true;
             $scope.IssueCreate.ClientEmailID = $scope.clientlists[0].Assort_ClientEmail;
             var postData = { "request": $scope.IssueCreate }
             var createUpdateIssue = JobService.createUpdateIssue.PostPromise(postData);
             createUpdateIssue.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     $scope.isLoader = false;
                     swal("Success", "Issue created succesfully and sent email to your relationship manager  !", "success");
 
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );
         }
-        $rootScope.Logout = function() {
+        $rootScope.Logout = function () {
 
             window.location.href = '/Index.html';
             localStorage.clear();
@@ -503,12 +513,12 @@
             return (idstr);
         }
 
-        $scope.updateIssueStatus = function(item, status, index) {
+        $scope.updateIssueStatus = function (item, status, index) {
             $scope.isLoader = true;
             var UpdateIssueStatus = JobService.UpdateIssueStatus.PostPromise(item.IssueID, status, index);
             UpdateIssueStatus.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
                     swal("Success", "Status updated successfully !", "success");
 
                     $scope.isLoader = false;
@@ -516,7 +526,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             );

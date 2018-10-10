@@ -15,6 +15,8 @@
         margin: 20px 20px;
     }
 
+   
+
     .card-item {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
@@ -23,6 +25,8 @@
         margin-left: 20px;
         width: 100%;
         text-align: center;
+        transition: max-height 0.7s ease-in;
+
     }
 
     .item {
@@ -38,10 +42,13 @@
         align-items: center;
         flex-direction: column;
         margin: 8px;
+
     }
 
     .card-item:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        max-height: auto;
+        cursor: pointer;
     }
 
     .item:hover {
@@ -51,8 +58,24 @@
     .content {
         justify-content: space-between;
         flex-wrap: wrap;
+        bottom: -100%;
+
+
     }
 
+    .card-content {
+        display: none;
+        transition: height 2.5s ease;
+        flex-wrap: wrap;
+        ALIGN-ITEMS: CENTER;
+        JUSTIFY-CONTENT: SPACE-AROUND;
+    }
+    .card-item:hover>.card-content {
+        display: flex;
+        overflow: hidden;
+        height: auto;
+
+    }
     hr {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -60,16 +83,22 @@
         border-top: 1px solid #4dc0ef;
     }
 
+    .content-number {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
     /* background-color: green;
     color: #ecf0f5; */
 </style>
 
+<script>
 
+</script>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         Dashboard
-        <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -94,10 +123,10 @@
             <div class="card-item" ng-repeat="(key, value) in n">
                 <h3>{{key}}</h3>
                 <hr>
-                <div class="flex content">
+                <div class="flex card-content">
                     <div class="flex item" ng-repeat="(k,v) in value[0]">
                         <h5>{{k}}</h5>
-                        {{v}}
+                        <span class="content-number">{{v}}</span>
                     </div>
                 </div>
             </div>
