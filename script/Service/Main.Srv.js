@@ -23,6 +23,29 @@
                 return deferObject.promise;
             }
         };
+    GetnewsAndMedia = {
+
+        getPromise: function () {
+            let returnValue;
+
+            var promise = $http.get(API_GetnewsAndMedia),
+                deferObject = deferObject || $q.defer();
+
+            promise.then(
+                // OnSuccess function
+                function (answer) {
+                    // This code will only run if we have a successful promise.
+                    deferObject.resolve(answer);
+                },
+                // OnFailure function
+                function (reason) {
+                    // This code will only run if we have a failed promise.
+                    deferObject.reject(reason);
+                });
+
+            return deferObject.promise;
+        }
+    };
     getDocList = {
 
         getPromise: function (id) {
@@ -1083,7 +1106,8 @@
         getClientCard: getClientCard,
         getClientDash: getClientDash,
         InsertClientDash: InsertClientDash,
-        addNewsAndMedia: addNewsAndMedia
+        addNewsAndMedia: addNewsAndMedia,
+        GetnewsAndMedia: GetnewsAndMedia
     }
 
 }]);

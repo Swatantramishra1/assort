@@ -1,5 +1,5 @@
 ﻿app.controller('CommonCtrl', ['$scope', '$rootScope', '$localStorage', '$timeout', '$interval', '$filter', '$state', 'ULoginService', 'JobService', '$sce',
-    function($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, ULoginService, JobService, $sce) {
+    function ($scope, $rootScope, $localStorage, $timeout, $interval, $filter, $state, ULoginService, JobService, $sce) {
 
 
 
@@ -29,8 +29,29 @@
             '../../img/client/middleEast/MTMMM.jpg',
             '../../img/client/middleEast/NBHH.jpg'
         ];
+        $scope.getStyle = function (dt) {
 
+            return {
+                background: `linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url(${dt.newsImage}) center center no-repeat`
+            }
 
+        };
+        if ($state.current.name == "news") {
+            $scope.isLoader = true;
+            let updateNews = JobService.GetnewsAndMedia.getPromise();
+            updateNews.then(
+                // OnSuccess function
+                function (answer) {
+                    $scope.isLoader = false;
+                    $scope.getNewsAndMedia = answer.data.GetnewsAndMediaResult.Result;
+
+                },
+                // OnFailure function
+                function (reason) {
+                    swal("Error", "Some thing went wrong. Please try again !", "error");
+                }
+            );
+        }
         if ($state.current.name == "Job") {
             // $rootScope.jobSearch.title +
             $scope.search = $rootScope.jobSearch.location + $rootScope.jobSearch.experience;
@@ -41,7 +62,7 @@
                 experience: ""
             }
         }
-        $rootScope.showOptionOfheader = function() {
+        $rootScope.showOptionOfheader = function () {
             if ($(".firstRow").hasClass('AddMargin')) {
                 $(".firstRow").removeClass("AddMargin");
             } else {
@@ -50,10 +71,10 @@
 
         };
 
-        $rootScope.redirectClick = function(From) {
+        $rootScope.redirectClick = function (From) {
             if (From === "USA") {
                 window.location.href = "http://www.radfordglobalus.com"
-                    //window.location.assign("http://www.radfordglobalus.com");
+                //window.location.assign("http://www.radfordglobalus.com");
             } else {
                 $scope.redirectPage = From;
                 if (From == "Index") {
@@ -98,7 +119,7 @@
                     itemWidth: 210,
                     itemMargin: 5,
                     pauseOnAction: true, // default setting
-                    after: function(slider) {
+                    after: function (slider) {
                         /* auto-restart player if paused after action */
                         if (!slider.playing) {
                             slider.play();
@@ -116,16 +137,16 @@
 
         };
 
-        $scope.check = function() {
+        $scope.check = function () {
             $rootScope.redirectClick($scope.redirectPage)
 
         }
 
-        $scope.StartTimer = function() {
+        $scope.StartTimer = function () {
             //Set the Timer start message.
             $scope.Message = "Timer started. ";
             var count = 0;
-            $scope.Timer = $interval(function() {
+            $scope.Timer = $interval(function () {
                 count = count + 1;
                 $rootScope.Message = count;
                 if (count == 15) {
@@ -136,7 +157,7 @@
         };
 
         //Timer stop function.
-        $scope.StopTimer = function() {
+        $scope.StopTimer = function () {
 
             //Set the Timer stop message.
             $scope.Message = "Timer stopped.";
@@ -160,7 +181,7 @@
             var getJobList = JobService.getJobList.getPromise();
             getJobList.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetJobListResult.ResponseCode == 0) {
 
@@ -181,13 +202,13 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                 }
             )
         }
         var taketempArray = [];
-        $scope.jobFilterView = function(Name) {
+        $scope.jobFilterView = function (Name) {
             if (taketempArray.indexOf(Name) == -1) {
                 taketempArray.push(Name);
             } else {
@@ -197,14 +218,14 @@
             $scope.TempjobList = [];
             $scope.joblists = [];
             for (let i = 0; i < taketempArray.length; i++) {
-                var ID = result.map(function(obj, indx) {
+                var ID = result.map(function (obj, indx) {
                     if (obj.Name == taketempArray[i])
                         return obj.LocationID
                 })
-                ID = ID.filter(function(elm) {
+                ID = ID.filter(function (elm) {
                     return elm !== undefined;
                 });
-                $scope.TempjobList = $scope.globaljobList.map(function(task, index, array) {
+                $scope.TempjobList = $scope.globaljobList.map(function (task, index, array) {
 
                     if (task.LocationID == ID[0])
                         return task;
@@ -212,10 +233,10 @@
 
                 });
 
-                $scope.TempjobList = $scope.TempjobList.filter(function(elm) {
+                $scope.TempjobList = $scope.TempjobList.filter(function (elm) {
                     return elm !== undefined;
                 });
-                $scope.TempjobList.forEach(function(obj) {
+                $scope.TempjobList.forEach(function (obj) {
                     $scope.joblists.push(obj);
                 })
                 $scope.joblists = removeDuplicates($scope.joblists, "JobID");
@@ -227,40 +248,40 @@
 
         }
 
-        $scope.jobLocationFiter = function() {
+        $scope.jobLocationFiter = function () {
             let itemss = {};
             let filterIsDelete = $scope.joblists.filter((data => data.IsDelete == "False"));
-            _.uniq(filterIsDelete.map((data => data.Job_Location))).filter((data => data != "" && isNaN(data))).forEach(function(data) {
+            _.uniq(filterIsDelete.map((data => data.Job_Location))).filter((data => data != "" && isNaN(data))).forEach(function (data) {
                 console.log(data)
                 let item = data.split(',');
-                item.forEach(function(val) {
+                item.forEach(function (val) {
                     itemss[val] = 0;
                 })
 
             })
             $scope.tempLocationFilter = Object.keys(itemss).filter((data => data != "" && isNaN(data)))
-                // var jobListLocation_copy = $.extend(true, [], $scope.joblists);
-                // $scope.tempLocationFilter = {};
-                // var storeTempJobLocation = {};
-                // jobListLocation_copy.forEach(function(obj) {
-                //     var key = obj.LocationID;
-                //     storeTempJobLocation[key] = (storeTempJobLocation[key] || 0) + 1
-                // });
-                // var getAllKeys = Object.keys(storeTempJobLocation);
-                // // var result = _.uniq($scope.jobLocationlists, 'Name');
-                // var result = removeDuplicates($scope.jobLocationlists, "Name");
-                // for (var key in storeTempJobLocation) {
-                //     if (storeTempJobLocation.hasOwnProperty(key)) {
-                //         result.forEach(function(obj) {
-                //                 if (obj.LocationID == key) {
-                //                     $scope.tempLocationFilter[obj.Name] = storeTempJobLocation[key];
-                //                 }
-                //             })
-                //             // console.log(key + " -> " + p[key]);
-                //     }
-                // }
-                // console.log($scope.tempLocationFilter)
-                // Object.keys(obj)
+            // var jobListLocation_copy = $.extend(true, [], $scope.joblists);
+            // $scope.tempLocationFilter = {};
+            // var storeTempJobLocation = {};
+            // jobListLocation_copy.forEach(function(obj) {
+            //     var key = obj.LocationID;
+            //     storeTempJobLocation[key] = (storeTempJobLocation[key] || 0) + 1
+            // });
+            // var getAllKeys = Object.keys(storeTempJobLocation);
+            // // var result = _.uniq($scope.jobLocationlists, 'Name');
+            // var result = removeDuplicates($scope.jobLocationlists, "Name");
+            // for (var key in storeTempJobLocation) {
+            //     if (storeTempJobLocation.hasOwnProperty(key)) {
+            //         result.forEach(function(obj) {
+            //                 if (obj.LocationID == key) {
+            //                     $scope.tempLocationFilter[obj.Name] = storeTempJobLocation[key];
+            //                 }
+            //             })
+            //             // console.log(key + " -> " + p[key]);
+            //     }
+            // }
+            // console.log($scope.tempLocationFilter)
+            // Object.keys(obj)
         }
 
         function removeDuplicates(originalArray, prop) {
@@ -276,7 +297,7 @@
             }
             return newArray;
         }
-        $scope.showJobView = function(JobID) {
+        $scope.showJobView = function (JobID) {
             $localStorage.jobViewID = JobID;
             $state.go("Job/View");
         }
@@ -286,7 +307,7 @@
             var askForPromise = JobService.getJobListByID.getPromise($localStorage.jobViewID);
             askForPromise.then(
                 // OnSuccess function
-                function(answer) {
+                function (answer) {
 
                     if (answer.data.GetJobListByIDResult.ResponseCode == 0) {
 
@@ -304,7 +325,7 @@
 
                 },
                 // OnFailure function
-                function(reason) {
+                function (reason) {
 
                     $scope.ErrorMessage = answer.data.GetLoginResult.ResponseMessage;
                     //$scope.somethingWrong = reason;
@@ -314,7 +335,7 @@
         }
 
 
-        $scope.apply = function() {
+        $scope.apply = function () {
             console.log('pull', $localStorage.LoginStatusLocal);
 
             if ($localStorage.LoginStatusLocal) {
@@ -322,7 +343,7 @@
                 var ApplyJob = JobService.ApplyJob.PostPromise($localStorage.userData.UR_ID, $rootScope.jobDetailsInfo.JobLists[0].JobID);
                 ApplyJob.then(
                     // OnSuccess function
-                    function(answer) {
+                    function (answer) {
 
                         if (answer.ApplyJobResult.ResponseCode == 0) {
                             alert(answer.ApplyJobResult.ResponseMessage);
@@ -334,7 +355,7 @@
                         $rootScope.LoginStatus = true;
                     },
                     // OnFailure function
-                    function(reason) {
+                    function (reason) {
 
                     }
                 )
@@ -358,21 +379,21 @@
             minimumChars: 1,
             dropdownWidth: '500px',
             dropdownHeight: '200px',
-            data: function(term) {
+            data: function (term) {
                 return $http.get(API_GetJobAutoComplete + "/" + term + "/0")
-                    .then(function(response) {
+                    .then(function (response) {
                         // ideally filtering should be done on the server
                         console.log('data', response.data)
                         return response.data
                     });
             },
-            renderItem: function(item) {
+            renderItem: function (item) {
                 return {
                     value: item.name,
                     label: $sce.trustAsHtml("<p class='auto-complete'>" + item.name + "</p>")
                 };
             },
-            itemSelected: function(e) {
+            itemSelected: function (e) {
                 that.airport = e.item;
             }
         };

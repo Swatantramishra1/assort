@@ -2,10 +2,10 @@
 // Host Name & Urls
 
 //For Locals
-var ServerName = "http://localhost:51176/Service/";
+// var ServerName = "http://localhost:51176/Service/";
 
 //For Hosting
-// var ServerName = "http://assortvikash.azurewebsites.net/Service/";
+var ServerName = "http://assortvikash.azurewebsites.net/Service/";
 
 
 
@@ -75,6 +75,7 @@ var API_GetCardClient = ServerName + Service_Common + 'GetCardClient/';
 var API_AddCardClient = ServerName + Service_Common + 'AddCardClient';
 var API_deleteClient = ServerName + Service_Common + 'deleteClient/';
 var API_addNewsAndMedia = ServerName + Service_Common + 'newsAndMediaPost';
+var API_GetnewsAndMedia = ServerName + Service_Common + 'GetnewsAndMedia';
 var messageJson = {
     info: "information",
     success: "success",
