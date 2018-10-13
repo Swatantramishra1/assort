@@ -1,0 +1,51 @@
+<style>
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add News And Media</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="">Heading</label>
+                            <input type="text" class="form-control" id="" ng-model="news.newsHeading" placeholder="Enter Heading">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="date" class="form-control" id="" ng-model="news.newsDate" placeholder="Enter Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Discription</label>
+                            <textarea text-angular="text-angular" name="newsDisc" ng-model="news.newsDisc" style="width: 100%"></textarea>
+                            <!-- <input type="date" class="form-control" id="" ng-model="news.date" placeholder="Enter Date"> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="">Image</label>
+                            <input type="file" class="form-control" id="img_news" ng-model="" placeholder="Enter Image">
+                            <div class="img-container">
+                                <img src="" id="newsImgSelected" height="300px" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="submitAddNewsData()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

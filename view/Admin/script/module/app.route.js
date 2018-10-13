@@ -17,7 +17,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "../Admin/View/other.html",
             controller: "CommonCtrl"
         })
-
+        .state('addnews', {
+            url: "/addnews",
+            templateUrl: "../Admin/View/addnews.html",
+            controller: "CommonCtrl"
+        })
     .state('showIssue', {
             url: "/showIssue",
             templateUrl: "../Admin/View/showIssue.html",
