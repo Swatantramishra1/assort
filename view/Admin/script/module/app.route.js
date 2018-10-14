@@ -17,6 +17,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "../Admin/View/other.html",
             controller: "CommonCtrl"
         })
+        .state('addBlog', {
+            url: "/addBlog",
+            templateUrl: "../Admin/View/addBlog.html",
+            controller: "CommonCtrl"
+        })
+        .state('updateBlog', {
+            url: "/updateBlog",
+            templateUrl: "../Admin/View/updateBlog.html",
+            controller: "CommonCtrl"
+        })
         .state('updatenews', {
             url: "/updatenews",
             templateUrl: "../Admin/View/updatenews.html",

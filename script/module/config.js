@@ -76,6 +76,9 @@ var API_AddCardClient = ServerName + Service_Common + 'AddCardClient';
 var API_deleteClient = ServerName + Service_Common + 'deleteClient/';
 var API_addNewsAndMedia = ServerName + Service_Common + 'newsAndMediaPost';
 var API_GetnewsAndMedia = ServerName + Service_Common + 'GetnewsAndMedia';
+
+var API_blogPost = ServerName + Service_Common + 'blogPost';
+var API_GetBlogs = ServerName + Service_Common + 'GetBlogs';
 var messageJson = {
     info: "information",
     success: "success",

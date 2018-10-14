@@ -1,0 +1,113 @@
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Show Blogs</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">All Blogs Lists</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Sr</th>
+                                <th>Heading</th>
+                                <th>Short Discription</th>
+                                <th>Date</th>
+                                <th>Img</th>
+                                <th>Action</th>
+                            </tr>
+
+                            <tr ng-repeat="blog in getblogAndMedia">
+                                <td>{{$index+1}}</td>
+                                <td>{{blog.blogHeading}}</td>
+                                <td>{{blog.blogShortDisc}}</td>
+                                <td>{{blog.blogPublishDate}}</td>
+                                <td> <img src="{{blog.blogImage}}" height="100px" width="100px" /> </td>
+                                <td><input type="button" ng-click="blogupdate(blog)" data-toggle="modal" data-target="#myModal" value="Update" /> </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<div class="loading" ng-show="isLoader">Loading&#8230;</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update blog</h4>
+            </div>
+            <div class="modal-body">
+                <style>
+                    .img-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                </style>
+
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="">Heading</label>
+                            <input type="text" class="form-control" id="" ng-model="blog.blogHeading" placeholder="Enter Heading">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="date" class="form-control" id="" ng-model="blog.blogPublishDate" placeholder="Enter Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Short Discription</label>
+                            <textarea  name="blogDisc" ng-model="blog.blogShortDisc" style="width: 100%"></textarea>
+                            <!-- <input type="date" class="form-control" id="" ng-model="blog.date" placeholder="Enter Date"> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="">Discription</label>
+                            <textarea  name="blogDisc" ng-model="blog.blogDisc" style="width: 100%"></textarea>
+                            <!-- <input type="date" class="form-control" id="" ng-model="blog.date" placeholder="Enter Date"> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="">Image</label>
+                            <input type="file" class="form-control" id="img_blog" ng-model="" placeholder="Enter Image">
+                            <div class="img-container">
+                                <img src="" id="blogImgSelected" height="300px" alt="" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary" ng-click="submitAddblogData()">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
