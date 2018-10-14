@@ -214,7 +214,7 @@
                 // OnSuccess function
                 function (answer) {
                     $scope.isLoader = false;
-                    $scope.getBlogs = answer.data.GetnewsAndMediaResult.Result;
+                    $scope.getBlogs = answer.data.GetBlogsResult.Result;
 
                 },
                 // OnFailure function

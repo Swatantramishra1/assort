@@ -86,6 +86,25 @@
         display: inline-block;
         background: #fff;
     }
+
+    .modal-dialog {
+        width: 90% !important;
+    }
+
+    .img-blogData {
+        width: 100%;
+    }
+
+    .discription {
+        box-shadow: 0 0 5px grey;
+        margin-bottom: 10px;
+        padding: 8px;
+        border-radius: 4px;
+    }
+
+    .img-blogData {
+        max-height: 300px;
+    }
 </style>
 
 <div class="blog-conatiner">
@@ -94,17 +113,17 @@
         <input type="search" value="">
     </div>
     <div class="flex blog-content">
-        <div class="blog-card">
+        <div class="blog-card" ng-repeat="item in getBlogs">
             <div class="blog-items">
-                <h3 class="blog-h3">Should you give a break to your SIP?</h3>
-                <h5 class="blog-h5">A lot of investors take the obviously smart step of starting SIPs in </h5>
-                <img src="https://content2.scripbox.com/content/attachment/1914/bresk-SIP.jpg" class="blog-img" alt="" srcset="">
+                <h3 class="blog-h3">{{item.blogHeading}}</h3>
+                <h5 class="blog-h5">{{item.blogShortDisc}}</h5>
+                <img src="{{item.blogImage}}" class="blog-img" alt="" srcset="">
             </div>
             <div class="blog-footer">
-                <button class="read-more">Read More</button>
+                <button class="read-more" data-toggle="modal" data-target="#myModal" ng-click="getDataFor(item)">Read More</button>
             </div>
         </div>
-        <div class="blog-card">
+        <!-- <div class="blog-card">
             <div class="blog-items">
                 <h3 class="blog-h3">Should you give a break to your SIP?</h3>
                 <h5 class="blog-h5">A lot of investors take the obviously smart step of starting SIPs in </h5>
@@ -112,41 +131,47 @@
             </div>
             <div class="blog-footer">
                 <button class="read-more">Read More</button>
+            </div>
+        </div> -->
+
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{detailsBlog.blogHeading}}</h4>
+            </div>
+            <div class="modal-body">
+                <style>
+                    .img-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                </style>
+
+                <form role="form">
+                    <div class="box-body">
+                        <div class="discription">
+                            {{detailsBlog.blogDisc}}
+                        </div>
+                        <div class="image">
+                            <img src="{{detailsBlog.blogImage}}" class="img-blogData" alt="" srcset="">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
-        <div class="blog-card">
-            <div class="blog-items">
-                <h3 class="blog-h3">Should you give a break to your SIP?</h3>
-                <h5 class="blog-h5">A lot of investors take the obviously smart step of starting SIPs in </h5>
-                <img src="https://content2.scripbox.com/content/attachment/1914/bresk-SIP.jpg" class="blog-img" alt="" srcset="">
-            </div>
-            <div class="blog-footer">
-                <button class="read-more">Read More</button>
-            </div>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-items">
-                <h3 class="blog-h3">Should you give a break to your SIP?</h3>
-                <h5 class="blog-h5">A lot of investors take the obviously smart step of starting SIPs in </h5>
-                <img src="https://content2.scripbox.com/content/attachment/1914/bresk-SIP.jpg" class="blog-img" alt="" srcset="">
-            </div>
-            <div class="blog-footer">
-                <button class="read-more">Read More</button>
-            </div>
-        </div>
-
-
-        <div class="blog-card">
-            <div class="blog-items">
-                <h3 class="blog-h3">Should you give a break to your SIP?</h3>
-                <h5 class="blog-h5">A lot of investors take the obviously smart step of starting SIPs in </h5>
-                <img src="https://content2.scripbox.com/content/attachment/1914/bresk-SIP.jpg" class="blog-img" alt="" srcset="">
-            </div>
-            <div class="blog-footer">
-                <button class="read-more">Read More</button>
-            </div>
-        </div>
     </div>
 </div>

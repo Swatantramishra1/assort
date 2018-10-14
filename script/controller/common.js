@@ -36,6 +36,26 @@
             }
 
         };
+        if ($state.current.name == 'Blog') {
+
+            $scope.isLoader = true;
+            let getBlogRequest = JobService.GetBlogs.getPromise();
+            getBlogRequest.then(
+                // OnSuccess function
+                function (answer) {
+                    $scope.isLoader = false;
+                    $scope.getBlogs = answer.data.GetBlogsResult.Result;
+
+                },
+                // OnFailure function
+                function (reason) {
+                    swal("Error", "Some thing went wrong. Please try again !", "error");
+                }
+            );
+        }
+        $scope.getDataFor = function (dt) {
+            $scope.detailsBlog = dt;
+        }
         if ($state.current.name == "news") {
             $scope.isLoader = true;
             let updateNews = JobService.GetnewsAndMedia.getPromise();
