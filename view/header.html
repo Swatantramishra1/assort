@@ -5,13 +5,13 @@
         background-color: red;
         z-index: 100;
     }
-    
+
     .get-started-btn {
         min-width: 120px;
         margin-top: 8px;
         margin-bottom: 8px;
     }
-    
+
     .btn-primary {
         color: #fff !important;
         background: #e33939 !important;
@@ -20,19 +20,19 @@
         vertical-align: middle;
         border: none;
     }
-    
+
     .btn-primary:hover {
         color: #fff !important;
         background: #e33939 !important;
     }
-    
+
     @media (min-width: 768px) {
         .navbar-nav>li>a {
             padding-top: 10px;
             padding-bottom: 10px;
         }
     }
-    
+
     .navbar-default .navbar-nav>li>a {
         color: black !important;
     }
@@ -44,23 +44,26 @@
 
         <ul class="list-inline" style="text-align:left">
             <li>
-                <a href="https://www.facebook.com/Assort-Staffing-Services-Pvt-Ltd-206870713130544/" target="_blank"><i class="fa fa-2x fa-facebook" aria-hidden="true" style="color:white"></i></a>
+                <a href="https://www.facebook.com/Assort-Staffing-Services-Pvt-Ltd-206870713130544/" target="_blank"><i class="fa fa-2x fa-facebook"
+                        aria-hidden="true" style="color:white"></i></a>
             </li>
             <li>
-                <a href="https://twitter.com/AssortServices" target="_blank"><i class="fa fa-2x fa-twitter" aria-hidden="true" style="color:white"></i></a>
+                <a href="https://twitter.com/AssortServices" target="_blank"><i class="fa fa-2x fa-twitter" aria-hidden="true"
+                        style="color:white"></i></a>
 
             </li>
             <li>
-                <a href="https://www.linkedin.com/organization/13274665/admin/updates" target="_blank"><i class="fa fa-2x fa-linkedin" aria-hidden="true" style="color:white"></i></a>
+                <a href="https://www.linkedin.com/organization/13274665/admin/updates" target="_blank"><i class="fa fa-2x fa-linkedin"
+                        aria-hidden="true" style="color:white"></i></a>
 
             </li>
             <li style="float:right;color:black !important">
                 <select ng-model="redirectPage" style="width:100%" ng-change="check()">
-                 
-                    <option value="Index" >
+
+                    <option value="Index">
                         India
                     </option>
-                    <option value="USA" >
+                    <option value="USA">
                         USA
                     </option>
                     <option value="MidelEast">
@@ -79,11 +82,11 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="#">
                 <div class="col-lg-12">
                     <img ui-sref="Index" style="margin-top: -13px;width: auto;height: 68px;margin-top:-28px;" src="../img/logo.jpg" href="#/Index"></div>
@@ -98,31 +101,40 @@
                     <a ui-sref="About" class="hidden-xs">ABOUT US</a>
                     <a ui-sref="About" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">ABOUT US</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">SERVICES <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">SERVICES
+                        <span class="caret"></span></a>
                     <ul class="dropdown-menu">
 
                         <li>
                             <a ui-sref="RecruitmentStaffing" class="hidden-xs">Recruitment Process Outsourcing</a>
-                            <a ui-sref="RecruitmentStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Recruitment Process Outsourcing</a></li>
+                            <a ui-sref="RecruitmentStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Recruitment
+                                Process Outsourcing</a></li>
 
 
                         <li>
                             <a ui-sref="Payroll" class="hidden-xs">Payroll Outsourcing</a>
-                            <a ui-sref="Payroll" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Payroll Outsourcing</a></li>
+                            <a ui-sref="Payroll" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Payroll
+                                Outsourcing
+                            </a></li>
 
 
 
                         <li>
                             <a ui-sref="SearchSelection" class="hidden-xs">Search & Selection</a>
-                            <a ui-sref="SearchSelection" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Search & Selection</a></li>
+                            <a ui-sref="SearchSelection" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Search
+                                & Selection</a></li>
 
                         <li><a ui-sref="TempStaffing" class="hidden-xs">Temporary Staffing</a></li>
-                        <li><a ui-sref="TempStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Temporary Staffing</a></li>
+                        <li><a ui-sref="TempStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">Temporary
+                                Staffing
+                            </a></li>
 
 
                         <li>
                             <a ui-sref="itStaffing" class="hidden-xs">IT Staffing</a>
-                            <a ui-sref="itStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">IT Staffing</a></li>
+                            <a ui-sref="itStaffing" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">IT
+                                Staffing
+                            </a></li>
                     </ul>
                 </li>
 
@@ -150,13 +162,17 @@
                 <li>
                     <a ui-sref="Contact" class="hidden-xs">CONTACT</a>
                     <a ui-sref="Contact" class="visible-xs" data-toggle="collapse" data-target=".navbar-collapse">CONTACT</a></li>
+                <li>
+                    <a href="http://careers.assortstaffing.com/" target="_blank" class="hidden-xs">CAREER</a>
+                    <a href="http://careers.assortstaffing.com/" class="visible-xs" target="_blank" data-toggle="collapse" data-target=".navbar-collapse">CAREER</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
 
                 <li>
                     <a ui-sref="LoginRes" class="hidden-xs get-started-btn btn btn-primary" style="color: white !important" ng-show="!LoginStatus">LOGIN/REGISTER</a>
-                    <a ui-sref="LoginRes" class="visible-xs get-started-btn  btn btn-primary" style="color: white !important" data-toggle="collapse" data-target=".navbar-collapse" ng-show="!LoginStatus">LOGIN/REGISTER</a></li>
+                    <a ui-sref="LoginRes" class="visible-xs get-started-btn  btn btn-primary" style="color: white !important" data-toggle="collapse"
+                        data-target=".navbar-collapse" ng-show="!LoginStatus">LOGIN/REGISTER</a></li>
 
 
                 <li>
