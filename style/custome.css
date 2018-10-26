@@ -69,9 +69,24 @@
     }
     
     .themeColorContactFontSub {
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
-    
+    .md-chip {
+        display: inline-block;
+        background: #e33939;
+        padding: 6px 16px;
+        border-radius: 32px;
+        font-size: 15px;
+        color: white;
+        text-transform: uppercase;
+        cursor: pointer;
+        zoom: 1;
+        transition: zoom 0.3ms linear;
+      }
+    .md-chip:hover {
+        background-color: #e33939b5;
+        zoom: 1.2;
+    }
     .navbar {
         /* margin-bottom: 0; */
         /* border-radius: 0; */

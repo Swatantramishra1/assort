@@ -105,6 +105,30 @@
     .img-blogData {
         max-height: 300px;
     }
+
+    .blog-view {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 131px;
+        z-index: 1000;
+        background-color: #808080b8;
+    }
+
+    .blog-view .container {
+        padding: 20px 20px;
+    }
+
+    .img-blog-cut {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        height: 40px;
+    }
+
+    .blog-view .container .content {
+        flex-direction: column;
+    }
 </style>
 
 <div class="blog-conatiner">
@@ -137,10 +161,16 @@
 
     </div>
 </div>
-
+<!-- <div class="blog-view">
+    <div class="container">
+        <img src="https://cdn0.iconfinder.com/data/icons/feather/96/circle-cross-128.png" class="img-blog-cut" alt="" srcset="">
+        <div class="flex content">
+                <img src="{{detailsBlog.blogImage}}" class="img-blogData" alt="" srcset="">
+        </div>
+    </div>
+</div> -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -155,23 +185,20 @@
                         align-items: center;
                     }
                 </style>
-
                 <form role="form">
                     <div class="box-body">
-                        <div class="discription">
-                            {{detailsBlog.blogDisc}}
-                        </div>
                         <div class="image">
                             <img src="{{detailsBlog.blogImage}}" class="img-blogData" alt="" srcset="">
                         </div>
+                        <div class="discription" id="discription">
+                            {{detailsBlog.blogDisc}}
+                        </div>
                     </div>
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>

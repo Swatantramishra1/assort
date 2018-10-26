@@ -55,6 +55,7 @@
         }
         $scope.getDataFor = function (dt) {
             $scope.detailsBlog = dt;
+            $('#discription').html($scope.detailsBlog.blogDisc);
         }
         if ($state.current.name == "news") {
             $scope.isLoader = true;
