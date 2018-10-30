@@ -321,7 +321,6 @@
                             swal("Success", "News deleted successfully !", "success");
 
                         }
-
                     },
                     // OnFailure function
                     function (reason) { }
