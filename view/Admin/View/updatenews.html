@@ -35,7 +35,10 @@
                                 <td>{{news.newsHeading}}</td>
                                 <td>{{news.newsDate}}</td>
                                 <td> <img src="{{news.newsImage}}" height="100px" width="100px" /> </td>
-                                <td><input type="button" ng-click="newsupdate(news)" data-toggle="modal" data-target="#myModal" value="Update" /> </td>
+                                <td>
+                                    <input type="button" ng-click="newsupdate(news)" data-toggle="modal" data-target="#myModal" value="Update" /> 
+                                    <input type="button" ng-click="deleteNews(news,$index)"  value="Delete" /> 
+                                </td>
                             </tr>
                         </table>
                     </div>

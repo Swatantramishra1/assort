@@ -79,6 +79,9 @@ var API_GetnewsAndMedia = ServerName + Service_Common + 'GetnewsAndMedia';
 
 var API_blogPost = ServerName + Service_Common + 'blogPost';
 var API_GetBlogs = ServerName + Service_Common + 'GetBlogs';
+
+var API_deleteNews = ServerName + Service_Common + 'deleteNews/';
+var API_deleteBlog = ServerName + Service_Common + 'deleteBlog/';
 var messageJson = {
     info: "information",
     success: "success",

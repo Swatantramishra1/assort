@@ -138,6 +138,52 @@
             return deferObject.promise;
         }
     };
+    deleteBlog = {
+
+        getPromise: function (BlogID) {
+            let returnValue;
+
+            var promise = $http.delete(API_deleteBlog + BlogID),
+                deferObject = deferObject || $q.defer();
+
+            promise.then(
+                // OnSuccess function
+                function (answer) {
+                    // This code will only run if we have a successful promise.
+                    deferObject.resolve(answer);
+                },
+                // OnFailure function
+                function (reason) {
+                    // This code will only run if we have a failed promise.
+                    deferObject.reject(reason);
+                });
+
+            return deferObject.promise;
+        }
+    };
+    deleteNews = {
+
+        getPromise: function (NewsId) {
+            let returnValue;
+
+            var promise = $http.delete(API_deleteNews + NewsId),
+                deferObject = deferObject || $q.defer();
+
+            promise.then(
+                // OnSuccess function
+                function (answer) {
+                    // This code will only run if we have a successful promise.
+                    deferObject.resolve(answer);
+                },
+                // OnFailure function
+                function (reason) {
+                    // This code will only run if we have a failed promise.
+                    deferObject.reject(reason);
+                });
+
+            return deferObject.promise;
+        }
+    };
     deleteClient = {
 
         getPromise: function (ID) {
@@ -1156,7 +1202,9 @@
         addNewsAndMedia: addNewsAndMedia,
         GetnewsAndMedia: GetnewsAndMedia,
         addblogAndMedia: addblogAndMedia,
-        GetBlogs: GetBlogs
+        GetBlogs: GetBlogs,
+        deleteBlog: deleteBlog,
+        deleteNews: deleteNews
     }
 
 }]);

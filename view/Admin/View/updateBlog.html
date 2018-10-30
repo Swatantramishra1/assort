@@ -34,10 +34,13 @@
                             <tr ng-repeat="blog in getBlogs">
                                 <td>{{$index+1}}</td>
                                 <td>{{blog.blogHeading}}</td>
-                                <td>{{blog.blogShortDisc}}</td>
+                                <td style="width: 300px;">{{blog.blogShortDisc}}</td>
                                 <td>{{blog.blogPublishDate}}</td>
                                 <td> <img src="{{blog.blogImage}}" height="100px" width="100px" /> </td>
-                                <td><input type="button" ng-click="blogupdate(blog)" data-toggle="modal" data-target="#myModal" value="Update" /> </td>
+                                <td>
+                                    <input type="button" ng-click="blogupdate(blog)" data-toggle="modal" data-target="#myModal" value="Update" />
+                                    <input type="button" ng-click="deleteBlog(blog,$index)"  value="Delete" /> 
+                                </td>
                             </tr>
                         </table>
                     </div>

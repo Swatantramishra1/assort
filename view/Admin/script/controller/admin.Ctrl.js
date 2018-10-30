@@ -306,7 +306,56 @@
 
 
         }
+        $scope.deleteNews = function (item, index) {
 
+            var result = confirm("Want to delete News?");
+            if (result) {
+                var deleteRM = JobService.deleteNews.getPromise(item.newsID);
+                deleteRM.then(
+                    // OnSuccess function
+                    function (answer) {
+
+                        if (answer.data.deleteNewsResult.ResponseCode == "0") {
+
+                            $scope.getNewsAndMedia.splice(index, 1);
+                            swal("Success", "News deleted successfully !", "success");
+
+                        }
+
+                    },
+                    // OnFailure function
+                    function (reason) { }
+                );
+            }
+
+
+
+        }
+        $scope.deleteBlog = function (item, index) {
+
+            var result = confirm("Want to delete Blog?");
+            if (result) {
+                var deleteRM = JobService.deleteBlog.getPromise(item.blogID);
+                deleteRM.then(
+                    // OnSuccess function
+                    function (answer) {
+
+                        if (answer.data.deleteBlogResult.ResponseCode == "0") {
+
+                            $scope.getBlogs.splice(index, 1);
+                            swal("Success", "Blog deleted successfully !", "success");
+
+                        }
+
+                    },
+                    // OnFailure function
+                    function (reason) { }
+                );
+            }
+
+
+
+        }
         $scope.ShowRelationShip = function (item) {
             $scope.RmShowDetails = item;
             $scope.addRelationship = item;
